@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="22b9df30c3904801b98cf305d41e9e50" Name="Diagram1">
+        <EntityTypeShape EntityType="DistribuidoraPModel.CategoriaProductos" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.DetalleFacturas" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Facturas" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Pantallas" Width="1.5" PointX="3.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Productos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Proveedores" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Roles" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Usuarios" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Vp_RolesUsuarios" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="DistribuidoraPModel.FK__Productos__idCat__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="DistribuidoraPModel.FK__DetalleFa__idFac__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DistribuidoraPModel.FK__DetalleFa__idPro__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DistribuidoraPModel.FK__Facturas__idClie__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DistribuidoraPModel.Inventarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DistribuidoraPModel.RolPantallas" ManuallyRouted="false" />
+        <AssociationConnector Association="DistribuidoraPModel.RolUsuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

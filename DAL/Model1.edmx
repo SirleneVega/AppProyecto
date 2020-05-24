@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DistribuidoraPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoriaProductos">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleFacturas">
+          <Key>
+            <PropertyRef Name="idFactura" />
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idFactura" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="subTotal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="int" Nullable="false" />
+          <Property Name="tipoPago" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="subTotal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="montoImpuesto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="descuento" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="montoTotal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="idCliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="transporte" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="numeroCheque" Type="int" />
+          <Property Name="nombreBanco" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Inventarios">
+          <Key>
+            <PropertyRef Name="idProducto" />
+            <PropertyRef Name="idProveedor" />
+          </Key>
+          <Property Name="idProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idProveedor" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pantallas">
+          <Key>
+            <PropertyRef Name="idPantalla" />
+          </Key>
+          <Property Name="idPantalla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="codigoBarra" />
+          </Key>
+          <Property Name="codigoBarra" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="precioCompra" Type="int" Nullable="false" />
+          <Property Name="porcentajeIV" Type="int" Nullable="false" />
+          <Property Name="porcentajeIVA" Type="int" Nullable="false" />
+          <Property Name="precioVenta" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="exento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="unidadMedida" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="cedulaLegal" />
+          </Key>
+          <Property Name="cedulaLegal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreComercial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contacto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolPantallas">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="idPantalla" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idPantalla" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolUsuarios">
+          <Key>
+            <PropertyRef Name="email" />
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipoCedula" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vp_RolesUsuarios">
+          <Key>
+            <PropertyRef Name="nombreCompleto" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="rolDescripcion" />
+          </Key>
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="rolDescripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DetalleFa__idFac__4BAC3F29">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+          <End Role="DetalleFacturas" Type="Self.DetalleFacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="DetalleFacturas">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleFa__idPro__4CA06362">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="DetalleFacturas" Type="Self.DetalleFacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="codigoBarra" />
+            </Principal>
+            <Dependent Role="DetalleFacturas">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__idClie__440B1D61">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__idPro__5165187F">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Inventarios" Type="Self.Inventarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="cedulaLegal" />
+            </Principal>
+            <Dependent Role="Inventarios">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__idPro__52593CB8">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Inventarios" Type="Self.Inventarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="codigoBarra" />
+            </Principal>
+            <Dependent Role="Inventarios">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__idCat__48CFD27E">
+          <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaProductos">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolPantal__idPan__3D5E1FD2">
+          <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="1" />
+          <End Role="RolPantallas" Type="Self.RolPantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pantallas">
+              <PropertyRef Name="idPantalla" />
+            </Principal>
+            <Dependent Role="RolPantallas">
+              <PropertyRef Name="idPantalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolPantal__idRol__3C69FB99">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RolPantallas" Type="Self.RolPantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolPantallas">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolUsuari__email__403A8C7D">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="RolUsuarios" Type="Self.RolUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="RolUsuarios">
+              <PropertyRef Name="email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolUsuari__idRol__412EB0B6">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RolUsuarios" Type="Self.RolUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolUsuarios">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="calcularFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idFactura" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DistribuidoraPModelStoreContainer">
+          <EntitySet Name="CategoriaProductos" EntityType="Self.CategoriaProductos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleFacturas" EntityType="Self.DetalleFacturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventarios" EntityType="Self.Inventarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pantallas" EntityType="Self.Pantallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolPantallas" EntityType="Self.RolPantallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolUsuarios" EntityType="Self.RolUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vp_RolesUsuarios" EntityType="Self.Vp_RolesUsuarios" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vp_RolesUsuarios].[nombreCompleto] AS [nombreCompleto], 
+    [Vp_RolesUsuarios].[email] AS [email], 
+    [Vp_RolesUsuarios].[idRol] AS [idRol], 
+    [Vp_RolesUsuarios].[rolDescripcion] AS [rolDescripcion]
+    FROM [dbo].[Vp_RolesUsuarios] AS [Vp_RolesUsuarios]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__DetalleFa__idFac__4BAC3F29" Association="Self.FK__DetalleFa__idFac__4BAC3F29">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleFa__idPro__4CA06362" Association="Self.FK__DetalleFa__idPro__4CA06362">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__idClie__440B1D61" Association="Self.FK__Facturas__idClie__440B1D61">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__idPro__5165187F" Association="Self.FK__Inventari__idPro__5165187F">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Inventarios" EntitySet="Inventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__idPro__52593CB8" Association="Self.FK__Inventari__idPro__52593CB8">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Inventarios" EntitySet="Inventarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__idCat__48CFD27E" Association="Self.FK__Productos__idCat__48CFD27E">
+            <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolPantal__idPan__3D5E1FD2" Association="Self.FK__RolPantal__idPan__3D5E1FD2">
+            <End Role="Pantallas" EntitySet="Pantallas" />
+            <End Role="RolPantallas" EntitySet="RolPantallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolPantal__idRol__3C69FB99" Association="Self.FK__RolPantal__idRol__3C69FB99">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolPantallas" EntitySet="RolPantallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolUsuari__email__403A8C7D" Association="Self.FK__RolUsuari__email__403A8C7D">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="RolUsuarios" EntitySet="RolUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolUsuari__idRol__412EB0B6" Association="Self.FK__RolUsuari__idRol__412EB0B6">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolUsuarios" EntitySet="RolUsuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DistribuidoraPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoriaProductos">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__idCat__48CFD27E" FromRole="CategoriaProductos" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="DetalleFacturas">
+          <Key>
+            <PropertyRef Name="idFactura" />
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idFactura" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="subTotal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__DetalleFa__idFac__4BAC3F29" FromRole="DetalleFacturas" ToRole="Facturas" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__DetalleFa__idPro__4CA06362" FromRole="DetalleFacturas" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="Int32" Nullable="false" />
+          <Property Name="tipoPago" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subTotal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="montoImpuesto" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="descuento" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="montoTotal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="idCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="transporte" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="numeroCheque" Type="Int32" />
+          <Property Name="nombreBanco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetalleFacturas" Relationship="Self.FK__DetalleFa__idFac__4BAC3F29" FromRole="Facturas" ToRole="DetalleFacturas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Facturas__idClie__440B1D61" FromRole="Facturas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Pantallas">
+          <Key>
+            <PropertyRef Name="idPantalla" />
+          </Key>
+          <Property Name="idPantalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.RolPantallas" FromRole="Pantallas" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="codigoBarra" />
+          </Key>
+          <Property Name="codigoBarra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precioCompra" Type="Int32" Nullable="false" />
+          <Property Name="porcentajeIV" Type="Int32" Nullable="false" />
+          <Property Name="porcentajeIVA" Type="Int32" Nullable="false" />
+          <Property Name="precioVenta" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="exento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="unidadMedida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriaProductos" Relationship="Self.FK__Productos__idCat__48CFD27E" FromRole="Productos" ToRole="CategoriaProductos" />
+          <NavigationProperty Name="DetalleFacturas" Relationship="Self.FK__DetalleFa__idPro__4CA06362" FromRole="Productos" ToRole="DetalleFacturas" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.Inventarios" FromRole="Productos" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="cedulaLegal" />
+          </Key>
+          <Property Name="cedulaLegal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreComercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.Inventarios" FromRole="Proveedores" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pantallas" Relationship="Self.RolPantallas" FromRole="Roles" ToRole="Pantallas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.RolUsuarios" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoCedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__idClie__440B1D61" FromRole="Usuarios" ToRole="Facturas" />
+          <NavigationProperty Name="Roles" Relationship="Self.RolUsuarios" FromRole="Usuarios" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Vp_RolesUsuarios">
+          <Key>
+            <PropertyRef Name="nombreCompleto" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="rolDescripcion" />
+          </Key>
+          <Property Name="nombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="rolDescripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Productos__idCat__48CFD27E">
+          <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaProductos">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleFa__idFac__4BAC3F29">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+          <End Role="DetalleFacturas" Type="Self.DetalleFacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="DetalleFacturas">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleFa__idPro__4CA06362">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="DetalleFacturas" Type="Self.DetalleFacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="codigoBarra" />
+            </Principal>
+            <Dependent Role="DetalleFacturas">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__idClie__440B1D61">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Inventarios">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+        </Association>
+        <Association Name="RolPantallas">
+          <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+        </Association>
+        <Association Name="RolUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DistribuidoraPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoriaProductos" EntityType="Self.CategoriaProductos" />
+          <EntitySet Name="DetalleFacturas" EntityType="Self.DetalleFacturas" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" />
+          <EntitySet Name="Pantallas" EntityType="Self.Pantallas" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Vp_RolesUsuarios" EntityType="Self.Vp_RolesUsuarios" />
+          <AssociationSet Name="FK__Productos__idCat__48CFD27E" Association="Self.FK__Productos__idCat__48CFD27E">
+            <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleFa__idFac__4BAC3F29" Association="Self.FK__DetalleFa__idFac__4BAC3F29">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleFa__idPro__4CA06362" Association="Self.FK__DetalleFa__idPro__4CA06362">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__idClie__440B1D61" Association="Self.FK__Facturas__idClie__440B1D61">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="Inventarios" Association="Self.Inventarios">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="RolPantallas" Association="Self.RolPantallas">
+            <End Role="Pantallas" EntitySet="Pantallas" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="RolUsuarios" Association="Self.RolUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <FunctionImport Name="calcularFactura">
+            <Parameter Name="idFactura" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DistribuidoraPModelStoreContainer" CdmEntityContainer="DistribuidoraPEntities">
+          <EntitySetMapping Name="CategoriaProductos">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.CategoriaProductos">
+              <MappingFragment StoreEntitySet="CategoriaProductos">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleFacturas">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.DetalleFacturas">
+              <MappingFragment StoreEntitySet="DetalleFacturas">
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="tipoPago" ColumnName="tipoPago" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="montoImpuesto" ColumnName="montoImpuesto" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="transporte" ColumnName="transporte" />
+                <ScalarProperty Name="numeroCheque" ColumnName="numeroCheque" />
+                <ScalarProperty Name="nombreBanco" ColumnName="nombreBanco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pantallas">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Pantallas">
+              <MappingFragment StoreEntitySet="Pantallas">
+                <ScalarProperty Name="idPantalla" ColumnName="idPantalla" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="codigoBarra" ColumnName="codigoBarra" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precioCompra" ColumnName="precioCompra" />
+                <ScalarProperty Name="porcentajeIV" ColumnName="porcentajeIV" />
+                <ScalarProperty Name="porcentajeIVA" ColumnName="porcentajeIVA" />
+                <ScalarProperty Name="precioVenta" ColumnName="precioVenta" />
+                <ScalarProperty Name="exento" ColumnName="exento" />
+                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="cedulaLegal" ColumnName="cedulaLegal" />
+                <ScalarProperty Name="nombreComercial" ColumnName="nombreComercial" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tipoCedula" ColumnName="tipoCedula" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vp_RolesUsuarios">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Vp_RolesUsuarios">
+              <MappingFragment StoreEntitySet="Vp_RolesUsuarios">
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="rolDescripcion" ColumnName="rolDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Inventarios" TypeName="DistribuidoraPModel.Inventarios" StoreEntitySet="Inventarios">
+            <EndProperty Name="Proveedores">
+              <ScalarProperty Name="cedulaLegal" ColumnName="idProveedor" />
+            </EndProperty>
+            <EndProperty Name="Productos">
+              <ScalarProperty Name="codigoBarra" ColumnName="idProducto" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RolPantallas" TypeName="DistribuidoraPModel.RolPantallas" StoreEntitySet="RolPantallas">
+            <EndProperty Name="Pantallas">
+              <ScalarProperty Name="idPantalla" ColumnName="idPantalla" />
+            </EndProperty>
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="idRol" ColumnName="idRol" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RolUsuarios" TypeName="DistribuidoraPModel.RolUsuarios" StoreEntitySet="RolUsuarios">
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="email" ColumnName="email" />
+            </EndProperty>
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="idRol" ColumnName="idRol" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="calcularFactura" FunctionName="DistribuidoraPModel.Store.calcularFactura" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
