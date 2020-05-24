@@ -12,5 +12,7 @@ namespace BLL
         public int cantidad { set; get; }
         public double subTotal { set; get; }
         
+
+
     }
 }
