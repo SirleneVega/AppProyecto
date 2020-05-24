@@ -4,6 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%-- Todo el contenido --%>
     <div class ="contenidoDefault">
+        <h1>Rico Mario</h1>
         <%-- Carousel --%>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
