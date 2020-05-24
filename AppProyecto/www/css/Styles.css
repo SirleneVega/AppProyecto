@@ -1,0 +1,116 @@
+﻿body {
+}
+
+div.contenidoDefault{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+img.imganesCarousel {
+   
+    height: 500px;
+}
+img.difuminado:hover {
+    transition: all .5s ease-in-out;
+    filter: opacity(.5);
+    content: url(img/logo2.png);
+}
+img.difuminado2:hover {
+    transition: all .5s ease-in-out;
+    filter: opacity(.5);
+}
+
+footer a {
+    color: black;
+}
+
+footer {
+    background-color: #3351C8;
+    margin-top: 2%;
+    margin-bottom: 0;
+}
+
+.color {
+    background-color: #3351C8;
+}
+
+.color2:hover {
+    background-color: rgba(129, 122, 122, 0.90);
+}
+
+.margenLogin{
+    margin-left:60%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.porEncima:hover{
+    color:white;
+}
+.margenAdmin{
+    margin-left: 100%;
+    background-color:black;
+    color:azure;
+}
+.logo{
+   width:60%;
+}
+
+.inicio {
+    margin-left: 100%;
+    color: darkgrey;
+}
+.inicio2 {
+    
+    color: darkgrey;
+}
+
+.encima:hover {
+    content: url(img/logo2.png);
+}
+
+.logo:hover {
+    content: url(img/logo2.png)
+}
+
+.iconos {
+    width: 15%;
+}
+
+.iconoFace:hover {
+    transition: all .5s ease-in-out;
+    filter: opacity(.5);
+    content: url(img/facebook2.png);
+}
+
+.iconoTwitter:hover {
+    transition: all .5s ease-in-out;
+    filter: opacity(.5);
+    content: url(img/twitter2.png);
+}
+
+.iconoInstagram:hover {
+    transition: all .5s ease-in-out;
+    filter: opacity(.5);
+    content: url(img/instagram2.png);
+}
+
+.iconoWhatsapp:hover {
+    transition: all .5s ease-in-out;
+    filter: opacity(.5);
+    content: url(img/whatsapp2.png);
+}
+.piecito{
+    margin-left:5%;
+    margin-right:5%;
+}
+.llena {
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}

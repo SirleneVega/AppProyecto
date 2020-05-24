@@ -1,0 +1,143 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="AppProyecto.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+    
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Distribuciones del Pacífico</title>
+
+    <link href="www/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="www/css/Styles.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">    
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <header id="header">
+                  <div id="navegacionLogin" >
+                  <nav class="navbar navbar-expand-lg navbar-light color">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo encima" src="www/css/img/logo.png" alt="Logo" /></a>
+                      <ul class="navbar-nav margenLogin" >
+                          <li class="nav-item">
+                              <a class="nav-link"   href="Login.aspx">Iniciar Sesión</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="Registrarme.aspx">Registrarme</a>
+                          </li>
+                      </ul>
+                  </nav>
+            </div>
+            </header>
+          
+            <nav class="navbar smart-scroll navbar-expand-lg navbar-dark bg-primary sticky-top">
+              <a class="navbar-brand" href="default.aspx" style="font-family:'Franklin Gothic'; font-size:18px">Distribuciones del pacífico</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active " style="margin-left:10%"> <a class="nav-link" href="default.aspx">Inicio </a> </li>
+                     <li class="nav-item dropdown" style="margin-left:10%">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Productos
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item color2" href="#">Tipo1</a>
+                          <a class="dropdown-item color2" href="#">Tipo2</a>
+                          <a class="dropdown-item color2" href="#">Tipo3</a>
+                        </div>
+                      </li>
+
+                        <li class="nav-item" style="margin-left:10%">
+                            <a class="nav-link" href="Ventas.aspx">Catálago</a>
+                          </li>
+                      <li class="nav-item" style="margin-left:10%">
+                            <a class="nav-link" href="Comprar.aspx">Carrito</a>
+                          </li>
+
+                        <li"nav-item dropdown" style="margin-left:10%">
+                        <a class="nav-link disabled dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Opciones de Administrador
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink2">
+                          <a class="dropdown-item color2" href="#">Tipo1</a>
+                          <a class="dropdown-item color2" href="#">Tipo2</a>
+                          <a class="dropdown-item color2" href="#">Tipo3</a>
+                        </div>
+                      </li>
+                </ul>
+               
+              </div> <!-- navbar-collapse.// -->
+            </nav>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+    </form>
+
+
+<%--Piecito--%>
+<footer>
+        <div class="piecito">
+            <div class="row">
+                <div class="col-sm">
+                    <%--Logo--%>
+                    <div>
+                        <a href="Default.aspx">
+                            <img class="logo" src="www/css/img/logo.png" alt="LogoApp">
+                        </a>
+                    </div>
+                </div>
+
+                <%--Información--%>
+                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align:center">
+                    <a href="Default.aspx">
+                        <p>Distribuciones De Pacífico</p>
+                    </a>
+                </div>
+
+                <%--Sucursales--%>
+                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align:center">
+                    <br>
+                    <strong>
+                        <p>Sucursales</p>
+                    </strong>
+                    <p>Puntarenas</p>
+                    <p>Roble</p>
+                    <p>Barranca</p>
+                    <p>Esparza</p>
+                    <p>Parrita</p>
+                </div>
+                
+                <%--Contactenos--%>
+                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align:center;">
+                        <strong>Encuentranos en nuestras Redes Sociales</strong>
+                    <br />
+                    <br />
+                    <a href="https://www.facebook.com/">
+                        <img class="iconos iconoFace" src="www/css/img/facebook.png" alt="Logo Facebook">
+                    </a>
+                    <a href="https://twitter.com/">
+                        <img class="iconos iconoTwitter" src="www/css/img/twitter.png" alt="Logo Twitter">
+                    </a>
+                    <a href="https://instagram.com/">
+                        <img class="iconos iconoInstagram" src="www/css/img/instagram.png" alt="Logo Instagram">
+                    </a>
+                    <a href="https://whatsapp.com/">
+                        <img class="iconos iconoWhatsapp" src="www/css/img/whatsapp.png" alt="Logo Whatsapp">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center">&copy; Copyright 2020, All Rights Reserved</p>
+</footer>
+</body>
+<script src="www/js/jquery-3.4.1.min.js"></script>
+<script src="www/js/bootstrap.min.js"></script>
+</html>
