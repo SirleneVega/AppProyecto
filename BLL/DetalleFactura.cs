@@ -11,6 +11,6 @@ namespace BLL
         public String codigoDeBarra { set; get; }
         public int cantidad { set; get; }
         public double subTotal { set; get; }
-
+        
     }
 }
