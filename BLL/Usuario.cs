@@ -15,7 +15,6 @@ namespace BLL
         public String nombreCompleto { set; get; }
         public int telefono { set; get; }
         public String direccion { set; get; }
-        public String password { set; get; }
 
     }
 }

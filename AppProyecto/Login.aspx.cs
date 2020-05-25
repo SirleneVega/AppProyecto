@@ -15,6 +15,7 @@ namespace AppProyecto
     {
         //Bases de datos
         private DistribuidoraPEntities entities;
+        private string nombre;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +32,7 @@ namespace AppProyecto
             {
                 if (this.validarPerfil(this.txtEmail.Text.Trim(), this.txtContrasena.Text.Trim()))
                 {
-                    FormsAuthentication.SetAuthCookie(this.txtEmail.Text.Trim(), false);
+                    FormsAuthentication.SetAuthCookie(nombre, false);
                     Response.Redirect("Default.aspx");
                 }
                 else
@@ -56,6 +57,7 @@ namespace AppProyecto
                 (u.email.Equals(email) & u.password.Equals(pw)));
                 if (usuarios != null)
                 {
+                    nombre = usuarios.nombreCompleto; 
                     autorizado = true;
                 }
 

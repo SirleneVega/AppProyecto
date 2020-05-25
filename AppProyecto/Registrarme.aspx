@@ -196,7 +196,8 @@
         <div class="form-group mt-4">
             <div class="row">
                 <div class=" col-md-12">
-                    <asp:Button ID="btnRegistro" CssClass="btn btn-outline-primary" Text="Registrar" runat="server" />
+                    <asp:Button ID="btnRegistro" CssClass="btn btn-outline-primary" Text="Registrar" 
+                        OnClick="btnRegistro_Click" runat="server" />
                 </div>
             </div>
         </div>
