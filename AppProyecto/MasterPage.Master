@@ -69,34 +69,114 @@
 
                         
                     <li class="nav-item" >
+                        <div 
+                            <% if((int)Session["tipoUsuario"] == 1 || (int)Session["tipoUsuario"] == 2)
+                            {
+                                
+                            }
+                            else
+                            {
+                                Response.Write("style='display:none'");
+                            }
+                               %>
+                            >
                             <a class="nav-link" href="Tienda.aspx">Tienda</a>
+                        </div>
+
                           </li>
-                      
-                    <li class="nav-item dropdown">
+                                   <li class="nav-item dropdown">            <div 
+                            <% if((int)Session["tipoUsuario"] == 2 || (int)Session["tipoUsuario"] == 3)
+                            {
+                                
+                            }
+                            else
+                            {
+                                Response.Write("style='display:none'");
+                            }
+                               %>
+                            >
+
+                       
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Catálogos producto</a>
                             <div class="dropdown-menu color">
                                 <a class="dropdown-item cambioColor text-white" href="AgregarProducto.aspx">Agregar productos</a>
                             </div>
-                        </li>
+                        
+
+
+                                              </div>
+                                       </li>
+                    
                      <li class="nav-item dropdown">
+                         <div 
+                            <% if((int)Session["tipoUsuario"] == 2 || (int)Session["tipoUsuario"] == 3)
+                            {
+                                
+                            }
+                            else
+                            {
+                                Response.Write("style='display:none'");
+                            }
+                               %>
+                            >
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Catálogos proveedor</a>
                             <div class="dropdown-menu color">
+                                 <div 
+                            <% if((int)Session["tipoUsuario"] == 2 )
+                            {
+                                
+                            }
+                            else
+                            {
+                                Response.Write("style='display:none'");
+                            }
+                               %>
+                            >
                                 <a class="dropdown-item cambioColor text-white" href="CatalogoProveedores.aspx">Catalogo proveedores </a>
+                                    </div>
                                  <a class="dropdown-item cambioColor text-white" href="AgregarProveedor.aspx">Agregar proveedores</a>
                                 <a class="dropdown-item cambioColor text-white" href="AsociarProveedor.aspx">Asociar proveedor</a>
                             </div>
+                             </div>
                         </li>
                      <li class="nav-item dropdown">
+                         <div 
+                            <% if((int)Session["tipoUsuario"] == 2 || (int)Session["tipoUsuario"] == 3)
+                            {
+                                
+                            }
+                            else
+                            {
+                                Response.Write("style='display:none'");
+                            }
+                               %>
+                            >
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Administrador</a>
+                                aria-haspopup="true" aria-expanded="false" >Administrador</a>
                             <div class="dropdown-menu color">
-                                <a class="dropdown-item cambioColor text-white" href="CatalogoUsuarios.aspx">Catalogo Usuarios </a>
-                                <a class="dropdown-item cambioColor text-white" href="Ventas.aspx">Ventas realizadas</a> 
+                                
+                                <a class="dropdown-item cambioColor text-white" href="Ventas.aspx">Ventas realizadas</a>
+                                <div 
+                            <% if( (int)Session["tipoUsuario"] == 2)
+                            {
+                                
+                            }
+                            else
+                            {
+                                Response.Write("style='display:none'");
+                            }
+                               %>
+                            >
+                                 
+                            
                                 <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Asignar Rol</a>
                                 <a class="dropdown-item cambioColor text-white" href="AgregarRol.aspx">Agregar Rol</a>
+                                <a class="dropdown-item cambioColor text-white" href="CatalogoUsuarios.aspx">Catalogo Usuarios </a>
+                                    </div>
                             </div>
+                         </div>
                         </li>
                     <li class="nav-item" >
                             <a class="nav-link" href="#">Reporte</a>
