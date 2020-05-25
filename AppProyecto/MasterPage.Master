@@ -60,10 +60,10 @@
                   <li class="nav-item active "> <a class="nav-link" href="default.aspx">Inicio </a> </li>
                      <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Catálogos producto</a>
+                                aria-haspopup="true" aria-expanded="false">Producto</a>
                             <div class="dropdown-menu color">
-                                <a class="dropdown-item cambioColor text-white" href="#">Catalogo productos</a>
-                                <a class="dropdown-item cambioColor text-white" href="#">Agregar productos</a>
+                                <a class="dropdown-item cambioColor text-white" href="#">Drogas</a>
+                                <a class="dropdown-item cambioColor text-white" href="#">Cosas malas</a>
                             </div>
                         </li>
 
@@ -86,8 +86,21 @@
                             <div class="dropdown-menu color">
                                 <a class="dropdown-item cambioColor text-white" href="#">Catalogo proveedores </a>
                                  <a class="dropdown-item cambioColor text-white" href="#">Agregar proveedores</a>
+                                <a class="dropdown-item cambioColor text-white" href="#">Asociar proveedor</a>
                             </div>
                         </li>
+                     <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Administrador</a>
+                            <div class="dropdown-menu color">
+                                <a class="dropdown-item cambioColor text-white" href="#">Catalogo Usuarios </a>
+                                 <a class="dropdown-item cambioColor text-white" href="#">Asignar Rol</a>
+                                <a class="dropdown-item cambioColor text-white" href="#">Agregar Rol</a>
+                            </div>
+                        </li>
+                    <li class="nav-item" >
+                            <a class="nav-link" href="#">Reporte</a>
+                          </li>
                 </ul>
                
               </div> <!-- navbar-collapse.// -->
