@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DistribuidoraPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DistribuidoraPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CategoriaProductos">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -110,9 +110,27 @@
           <Property Name="tipoCedula" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="nombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefono" Type="int" Nullable="false" />
-          <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cedula" Type="varchar" MaxLength="15" />
           <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_PantallaUsuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vp_PantallaUsuario">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="descripcionRol" />
+            <PropertyRef Name="RolPantallasIdRol" />
+            <PropertyRef Name="RolPantallasIdPantalla" />
+            <PropertyRef Name="idPantalla" />
+            <PropertyRef Name="descripcionPantalla" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="descripcionRol" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RolPantallasIdRol" Type="int" Nullable="false" />
+          <Property Name="RolPantallasIdPantalla" Type="int" Nullable="false" />
+          <Property Name="idPantalla" Type="int" Nullable="false" />
+          <Property Name="descripcionPantalla" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -263,6 +281,16 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <EntitySet Name="RolPantallas" EntityType="Self.RolPantallas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RolUsuarios" EntityType="Self.RolUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vp_PantallaUsuario" EntityType="Self.Vp_PantallaUsuario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vp_PantallaUsuario].[idRol] AS [idRol], 
+    [Vp_PantallaUsuario].[descripcionRol] AS [descripcionRol], 
+    [Vp_PantallaUsuario].[RolPantallasIdRol] AS [RolPantallasIdRol], 
+    [Vp_PantallaUsuario].[RolPantallasIdPantalla] AS [RolPantallasIdPantalla], 
+    [Vp_PantallaUsuario].[idPantalla] AS [idPantalla], 
+    [Vp_PantallaUsuario].[descripcionPantalla] AS [descripcionPantalla]
+    FROM [dbo].[Vp_PantallaUsuario] AS [Vp_PantallaUsuario]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Vp_RolesUsuarios" EntityType="Self.Vp_RolesUsuarios" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Vp_RolesUsuarios].[nombreCompleto] AS [nombreCompleto], 
@@ -312,8 +340,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <End Role="RolUsuarios" EntitySet="RolUsuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DistribuidoraPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -410,7 +437,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Name="tipoCedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefono" Type="Int32" Nullable="false" />
-          <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__idClie__440B1D61" FromRole="Usuarios" ToRole="Facturas" />
@@ -527,9 +554,26 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <End Role="Roles" EntitySet="Roles" />
           </AssociationSet>
           <FunctionImport Name="calcularFactura">
-            <Parameter Name="idFactura" Mode="In" Type="Int32" />
+          <Parameter Name="idFactura" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Vp_PantallaUsuario" EntityType="DistribuidoraPModel.Vp_PantallaUsuario" />
         </EntityContainer>
+        <EntityType Name="Vp_PantallaUsuario">
+          <Key>
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="descripcionRol" />
+            <PropertyRef Name="RolPantallasIdRol" />
+            <PropertyRef Name="RolPantallasIdPantalla" />
+            <PropertyRef Name="idPantalla" />
+            <PropertyRef Name="descripcionPantalla" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="descripcionRol" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RolPantallasIdRol" Type="Int32" Nullable="false" />
+          <Property Name="RolPantallasIdPantalla" Type="Int32" Nullable="false" />
+          <Property Name="idPantalla" Type="Int32" Nullable="false" />
+          <Property Name="descripcionPantalla" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -663,6 +707,18 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="calcularFactura" FunctionName="DistribuidoraPModel.Store.calcularFactura" />
+          <EntitySetMapping Name="Vp_PantallaUsuario">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Vp_PantallaUsuario">
+              <MappingFragment StoreEntitySet="Vp_PantallaUsuario">
+                <ScalarProperty Name="descripcionPantalla" ColumnName="descripcionPantalla" />
+                <ScalarProperty Name="idPantalla" ColumnName="idPantalla" />
+                <ScalarProperty Name="RolPantallasIdPantalla" ColumnName="RolPantallasIdPantalla" />
+                <ScalarProperty Name="RolPantallasIdRol" ColumnName="RolPantallasIdRol" />
+                <ScalarProperty Name="descripcionRol" ColumnName="descripcionRol" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
