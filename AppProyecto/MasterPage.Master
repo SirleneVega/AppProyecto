@@ -93,7 +93,8 @@
                                 aria-haspopup="true" aria-expanded="false">Administrador</a>
                             <div class="dropdown-menu color">
                                 <a class="dropdown-item cambioColor text-white" href="CatalogoUsuarios.aspx">Catalogo Usuarios </a>
-                                 <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Asignar Rol</a>
+                                <a class="dropdown-item cambioColor text-white" href="Ventas.aspx">Ventas realizadas</a> 
+                                <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Asignar Rol</a>
                                 <a class="dropdown-item cambioColor text-white" href="AgregarRol.aspx">Agregar Rol</a>
                             </div>
                         </li>
