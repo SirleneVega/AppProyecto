@@ -36,6 +36,7 @@ namespace DAL
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Vp_RolesUsuarios> Vp_RolesUsuarios { get; set; }
+        public virtual DbSet<Vp_PantallaUsuario> Vp_PantallaUsuario { get; set; }
     
         public virtual int calcularFactura(Nullable<int> idFactura)
         {
