@@ -21,6 +21,7 @@
         <AssociationConnector Association="DistribuidoraPModel.Inventarios" ManuallyRouted="false" />
         <AssociationConnector Association="DistribuidoraPModel.RolPantallas" ManuallyRouted="false" />
         <AssociationConnector Association="DistribuidoraPModel.RolUsuarios" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Vp_PantallaUsuario" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
