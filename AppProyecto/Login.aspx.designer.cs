@@ -60,12 +60,12 @@ namespace AppProyecto
         protected global::System.Web.UI.WebControls.ValidationSummary validaciones;
 
         /// <summary>
-        /// Control btnComprar.
+        /// Control btnIniciarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComprar;
+        protected global::System.Web.UI.WebControls.Button btnIniciarSesion;
     }
 }

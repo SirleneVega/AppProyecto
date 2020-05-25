@@ -80,7 +80,8 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
-                            <asp:Button ID="btnComprar" CssClass="btn btn-outline-primary my-2 my-sm-0" Text="Iniciar" runat="server" />
+                            <asp:Button ID="btnIniciarSesion" CssClass="btn btn-outline-primary my-2 my-sm-0" Text="Iniciar Sesión" 
+                                OnClick="btnIniciarSesion_Click" runat="server" />
                         </div>
                     </div>
                 </div>

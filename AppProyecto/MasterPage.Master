@@ -24,7 +24,8 @@
                         <img class="logo encima" src="www/css/img/logo.png" alt="Logo" /></a>
                       <ul class="navbar-nav margenLogin" >
                           <li class="nav-item">
-                              <a class="nav-link"   href="Login.aspx">Iniciar Sesión</a>
+                              <asp:LoginName ID="loginName" CssClass="nav-link seleccion" runat="server" />
+                              <asp:LoginStatus CssClass="nav-link seleccion" runat="server" />
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="Registrarme.aspx">Registrarme</a>
