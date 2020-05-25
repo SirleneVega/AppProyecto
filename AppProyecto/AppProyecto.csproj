@@ -74,11 +74,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarProducto.aspx" />
+    <Content Include="AgregarProveedor.aspx" />
+    <Content Include="AgregarRol.aspx" />
+    <Content Include="AsignarRol.aspx" />
+    <Content Include="AsociarProveedor.aspx" />
+    <Content Include="CatalogoProveedores.aspx" />
+    <Content Include="CatalogoUsuarios.aspx" />
     <Content Include="Comprar.aspx" />
     <Content Include="default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Registrarme.aspx" />
     <Content Include="RegistrarProducto.aspx" />
+    <Content Include="Tienda.aspx" />
     <Content Include="Ventas.aspx" />
     <Content Include="Web.config" />
     <Content Include="www\css\bootstrap.min.css" />
@@ -99,6 +107,55 @@
     <Content Include="www\js\jquery-3.4.1.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarProducto.aspx.cs">
+      <DependentUpon>AgregarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarProducto.aspx.designer.cs">
+      <DependentUpon>AgregarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarProveedor.aspx.cs">
+      <DependentUpon>AgregarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarProveedor.aspx.designer.cs">
+      <DependentUpon>AgregarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarRol.aspx.cs">
+      <DependentUpon>AgregarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarRol.aspx.designer.cs">
+      <DependentUpon>AgregarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignarRol.aspx.cs">
+      <DependentUpon>AsignarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignarRol.aspx.designer.cs">
+      <DependentUpon>AsignarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsociarProveedor.aspx.cs">
+      <DependentUpon>AsociarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsociarProveedor.aspx.designer.cs">
+      <DependentUpon>AsociarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoProveedores.aspx.cs">
+      <DependentUpon>CatalogoProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoProveedores.aspx.designer.cs">
+      <DependentUpon>CatalogoProveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoUsuarios.aspx.cs">
+      <DependentUpon>CatalogoUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoUsuarios.aspx.designer.cs">
+      <DependentUpon>CatalogoUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Comprar.aspx.cs">
       <DependentUpon>Comprar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,6 +198,13 @@
     </Compile>
     <Compile Include="RegistrarProducto.aspx.designer.cs">
       <DependentUpon>RegistrarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tienda.aspx.cs">
+      <DependentUpon>Tienda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tienda.aspx.designer.cs">
+      <DependentUpon>Tienda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventas.aspx.cs">
       <DependentUpon>Ventas.aspx</DependentUpon>

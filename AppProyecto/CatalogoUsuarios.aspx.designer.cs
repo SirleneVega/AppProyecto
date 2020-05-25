@@ -7,9 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppProyecto {
-    
-    
-    public partial class Tienda {
+namespace AppProyecto
+{
+
+
+    public partial class CatalogoUsuarios
+    {
     }
 }
