@@ -27,7 +27,7 @@
                             <asp:Label Text="Cedula:" runat="server" />
                         </div>
                         <div class="col-md-6">
-                            <asp:TextBox ID="txtCedula" CssClass="form-control" runat="server" placeholder="##-####-####" MaxLength="9" />
+                            <asp:TextBox ID="txtCedula" CssClass="form-control" runat="server" placeholder="##-####-####" MaxLength="15" />
                         </div>
                         <div class="col-md-1">
                             <asp:RequiredFieldValidator ID="requiredTxtCedula"
