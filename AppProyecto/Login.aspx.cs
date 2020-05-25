@@ -59,9 +59,12 @@ namespace AppProyecto
                 {
                     nombre = usuarios.nombreCompleto; 
                     autorizado = true;
+
+                    Session["tipoUsuario"] = this.entities.Vp_RolesUsuarios.FirstOrDefault(u => (u.email.Equals(email))).idRol;
+                    String tipo = ""+Session["tipoUsuario"];
                 }
 
-                //Sesion
+                
 
                 return autorizado;
             }

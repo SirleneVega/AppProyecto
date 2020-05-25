@@ -70,7 +70,7 @@
                       </li>
 
                         <li class="nav-item" style="margin-left:10%">
-                            <a class="nav-link" href="Ventas.aspx">Catálago</a>
+                            <a class="nav-link" href="Ventas.aspx">Tienda</a>
                           </li>
                       <li class="nav-item" style="margin-left:10%">
                             <a class="nav-link" href="Comprar.aspx">Carrito</a>
