@@ -114,3 +114,7 @@ footer {
     margin-right: 5%;
     margin-bottom: 5%;
 }
+
+.cambioColor:hover {
+    background-color: #0275d8;
+}
