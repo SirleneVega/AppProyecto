@@ -25,10 +25,25 @@
                       <ul class="navbar-nav margenLogin" >
                           <li class="nav-item">
                               <asp:LoginName ID="loginName" CssClass="nav-link seleccion" runat="server" />
-                              <asp:LoginStatus CssClass="nav-link seleccion" runat="server" />
+                              <div <% if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                  {
+                                      Response.Write("style='display:none'");
+                                  }
+                                  %>><asp:LoginStatus CssClass='nav-link seleccion' runat='server' /></div>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="Registrarme.aspx">Registrarme</a>
+                             <div <% if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                                  {
+                                      Response.Write("style='display:none'");
+                                  }
+                                  %>><asp:LoginStatus CssClass='nav-link seleccion' runat='server' /></div>
+                              <a class="nav-link" href="Registrarme.aspx" 
+                                  <% if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                  {
+                                      Response.Write("style='display:none'");
+                                  }
+                                  %>
+                                  >Registrarme</a>
                           </li>
                       </ul>
                   </nav>
