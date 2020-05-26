@@ -70,37 +70,17 @@ namespace AppProyecto
                 {
                     this.producto.estado = false;
                 }
-
-
-
-
-
-
                 this.agregarProducto(this.producto);
                 if (this.fileUpload.HasFile)
                 {
                     this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
                 }
-
-
-
-                Response.Redirect("Default.aspx");
+                
             }
             catch (Exception ex)
             {
             }
         }
-
-
-        private void llenarDropDown()
-        {
-            dropCategoria.DataSource = ("SELECT * FROM CategoriaProductos");
-            dropCategoria.DataTextField = "descripcion";
-            dropCategoria.DataValueField = "idCategoria";
-            
-            dropCategoria.Items.Insert(0, new ListItem("[Seleccione una categoria]", "0"));
-        }
-        
 
         private void agregarProducto(Producto producto)
         {
@@ -116,6 +96,7 @@ namespace AppProyecto
                 tblProductos.unidadMedida = producto.unidadMedia;
                 tblProductos.cantidad = producto.cantidad;
                 tblProductos.foto = producto.Foto;
+                //tblProductos.idCategoria = dropCategoria.SelectedIndex();
                 tblProductos.precioVenta = producto.precioVenta.GetHashCode();
                 if (producto.estado == true)
                 {
@@ -156,8 +137,8 @@ namespace AppProyecto
         private void limpiarPantalla()
         {
             this.txtCodigo.Text = "";
-            this.txtCantidad.Text = "0";
-            this.txtPrecioVenta.Text = "0";
+            this.txtCantidad.Text = "";
+            this.txtPrecioVenta.Text = "";
             this.txtDescripcion.Text = "";
             this.txtPrecio.Text = "";
             this.txtPorcentajeIVA.Text = "";
@@ -178,6 +159,25 @@ namespace AppProyecto
             da.Fill(ds);
             con.Close();
             return ds;
+        }
+
+        private void llenarDropDown()
+        {
+            try
+            {
+                dropCategoria.DataSource = ("SELECT * FROM CategoriaProductos");
+                dropCategoria.DataTextField = "descripcion";
+                dropCategoria.DataValueField = "idCategoria";
+                dropCategoria.DataBind();
+
+                dropCategoria.Items.Insert(0, new ListItem("[Seleccione una categoria]", "0"));
+            }
+            catch (Exception)
+            {
+
+               
+            }
+            
         }
     }
 }
