@@ -24,7 +24,7 @@ namespace AppProyecto
             entities = new DistribuidoraPEntities();
             try
             {
-                if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
                 {
                     Response.Redirect("Default.aspx");
                 }
