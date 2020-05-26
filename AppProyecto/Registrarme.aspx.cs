@@ -22,6 +22,17 @@ namespace AppProyecto
         {
             //Se inicia la bd
             entities = new DistribuidoraPEntities();
+            try
+            {
+                if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         protected void btnRegistro_Click(object sender, EventArgs e)

@@ -21,6 +21,17 @@ namespace AppProyecto
         {
             //Se inicializa la db
             this.entities = new DistribuidoraPEntities();
+            try
+            {
+                if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         
