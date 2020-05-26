@@ -67,6 +67,7 @@
           <Property Name="estado" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
           <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="foto" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -110,7 +111,7 @@
           <Property Name="tipoCedula" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="nombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefono" Type="int" Nullable="false" />
-          <Property Name="cedula" Type="varchar" MaxLength="15" />
+          <Property Name="cedula" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="password" Type="varchar(max)" Nullable="false" />
         </EntityType>
@@ -407,6 +408,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <NavigationProperty Name="CategoriaProductos" Relationship="Self.FK__Productos__idCat__48CFD27E" FromRole="Productos" ToRole="CategoriaProductos" />
           <NavigationProperty Name="DetalleFacturas" Relationship="Self.FK__DetalleFa__idPro__4CA06362" FromRole="Productos" ToRole="DetalleFacturas" />
           <NavigationProperty Name="Proveedores" Relationship="Self.Inventarios" FromRole="Productos" ToRole="Proveedores" />
+          <Property Name="foto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -437,7 +439,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Name="tipoCedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefono" Type="Int32" Nullable="false" />
-          <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__idClie__440B1D61" FromRole="Usuarios" ToRole="Facturas" />
@@ -625,6 +627,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="DistribuidoraPModel.Productos">
               <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="foto" ColumnName="foto" />
                 <ScalarProperty Name="codigoBarra" ColumnName="codigoBarra" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="precioCompra" ColumnName="precioCompra" />

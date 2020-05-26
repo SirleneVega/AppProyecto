@@ -8,6 +8,7 @@ namespace BLL
 {
     public class Producto
     {
+        public String Foto { set; get; }
         public String codigoDeBarra { set; get; }
         public String Descripcion { set; get; }
         public int precioCompra { set; get; }

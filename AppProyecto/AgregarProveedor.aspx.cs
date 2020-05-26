@@ -6,11 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 //Referencias
 using DAL;
+using BLL;
 
 namespace AppProyecto
 {
     public partial class AgregarProveedor : System.Web.UI.Page
     {
+       
+       
         DistribuidoraPEntities entities;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,5 +40,17 @@ namespace AppProyecto
                 throw ex;
             }
         }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+            
+
+        }
+
+        
+        
+
+       
     }
 }
