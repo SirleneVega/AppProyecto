@@ -186,22 +186,22 @@ namespace AppProyecto
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredTxtEstadoP;
 
         /// <summary>
-        /// Control txtCategoria.
+        /// Control dropCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtCategoria;
+        protected global::System.Web.UI.WebControls.DropDownList dropCategoria;
 
         /// <summary>
-        /// Control requiredTxtCategoria.
+        /// Control requiredDropCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredTxtCategoria;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredDropCategoria;
 
         /// <summary>
         /// Control fileUpload.

@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 //Referencias
 using DAL;
 using BLL;
+using System.Data;
+using System.Data.SqlClient;
+
 namespace AppProyecto
 {
     public partial class AgregarProducto : System.Web.UI.Page
@@ -16,6 +19,9 @@ namespace AppProyecto
         DistribuidoraPEntities entities;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) {
+                llenarDropDown();
+            }
             entities = new DistribuidoraPEntities();
             try
             {
@@ -86,8 +92,15 @@ namespace AppProyecto
         }
 
 
-
-
+        private void llenarDropDown()
+        {
+            dropCategoria.DataSource = ("SELECT * FROM CategoriaProductos");
+            dropCategoria.DataTextField = "descripcion";
+            dropCategoria.DataValueField = "idCategoria";
+            
+            dropCategoria.Items.Insert(0, new ListItem("[Seleccione una categoria]", "0"));
+        }
+        
 
         private void agregarProducto(Producto producto)
         {
@@ -152,6 +165,19 @@ namespace AppProyecto
             this.txtEstadoP.Text = "";
             this.txtUnidad.Text = "";
             this.txtExento.Text = "";
+        }
+
+
+        public DataSet ConsultarBD(string strSQL) {
+            string strConexion = "Data Source=localhost/SQLEXPRESS;Initial Catalog=DistribuidoraP;User ID=usuarioDistribuidora;Password=ucr2020;";
+            SqlConnection con = new SqlConnection(strConexion);
+            con.Open();
+            SqlCommand cmd = new SqlCommand(strSQL, con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            return ds;
         }
     }
 }

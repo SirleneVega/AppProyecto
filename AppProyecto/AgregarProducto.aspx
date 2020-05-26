@@ -239,18 +239,15 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <asp:Label Font-Bold="true" Text="Categoria del producto" runat="server" />
-                                <asp:DropDownList runat="server" ID="txtCategoria" CssClass="form-control text-xl-center">
-                                    <asp:ListItem Text="Seleccione la categoria" />
-                                    <asp:ListItem Text="Tipo 1" />
-                                    <asp:ListItem Text="Tipo 2" />
-                                    <asp:ListItem Text="Tipo 3" />
+                                <asp:DropDownList runat="server" ID="dropCategoria" CssClass="form-control text-xl-center">
+                                    
                                 </asp:DropDownList>
                             </div>
 
                             <div class="col-md-1">
-                                <asp:RequiredFieldValidator ID="requiredTxtCategoria"
+                                <asp:RequiredFieldValidator ID="requiredDropCategoria"
                                     ErrorMessage="Por favor ingresar la categoria del producto"
-                                    ControlToValidate="txtCategoria"
+                                    ControlToValidate="dropCategoria"
                                     runat="server"
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
