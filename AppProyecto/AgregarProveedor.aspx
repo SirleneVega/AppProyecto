@@ -23,9 +23,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-5">
                                 <asp:Label Font-Bold="true" Text="Cedula Juridica" runat="server" />
-                                <asp:TextBox ID="txtCedula" CssClass="form-control text-xl-center" runat="server" placeholder="0-000-000000" MaxLength="15" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtCedula" CssClass="form-control text-xl-center" runat="server" placeholder="0-000-000000" MaxLength="10" />
                             </div>
 
                             <div class="col-md-1">
@@ -42,9 +44,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-4">
                                 <asp:Label Font-Bold="true" Text="Nombre Compañia" runat="server" />
-                                <asp:TextBox ID="txtNombreC" CssClass="form-control text-xl-center" runat="server" MaxLength="15" />
+                            </div>
+                            <div class="col-md-7">
+                                <asp:TextBox ID="txtNombreC" CssClass="form-control text-xl-center" runat="server" MaxLength="40" />
                             </div>
 
                             <div class="col-md-1">
@@ -66,9 +70,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-5">
                                 <asp:Label Font-Bold="true" Text="Telefono" runat="server" />
-                                <asp:TextBox ID="txtTelefono" CssClass="form-control text-xl-center" runat="server" placeholder="0000-0000" MaxLength="15" />
+                            </div>
+                            <div class="col-md-6">
+                                 <asp:TextBox ID="txtTelefono" CssClass="form-control text-xl-center" runat="server" placeholder="0000-0000" MaxLength="11" />
                             </div>
 
                             <div class="col-md-1">
@@ -85,9 +91,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-3">
                                 <asp:Label Font-Bold="true" Text="Direccion" runat="server" />
-                                <asp:TextBox ID="txtDireccion" CssClass="form-control text-xl-center" runat="server" MaxLength="15" />
+                            </div>
+                            <div class="col-md-8">
+                                <asp:TextBox ID="txtDireccion" CssClass="form-control text-xl-center" runat="server" MaxLength="40" />
                             </div>
 
                             <div class="col-md-1">
@@ -110,9 +118,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-5">
                                 <asp:Label Font-Bold="true" Text="Contacto" runat="server" />
-                                <asp:TextBox ID="txtContacto" CssClass="form-control text-xl-center" runat="server" MaxLength="15" />
+                            </div>
+                            <div class="col-md-6">
+                                <asp:TextBox ID="txtContacto" CssClass="form-control text-xl-center" runat="server" MaxLength="11" />
                             </div>
 
                             <div class="col-md-1">
@@ -129,9 +139,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-3">
                                 <asp:Label Font-Bold="true" Text="Email" runat="server" />
-                                <asp:TextBox ID="txtEmail" CssClass="form-control text-xl-center" runat="server" MaxLength="15"  />
+                            </div>
+                            <div class="col-md-8">
+                                <asp:TextBox ID="txtEmail" CssClass="form-control text-xl-center" runat="server" MaxLength="40"  />
                             </div>
 
                             <div class="col-md-1">

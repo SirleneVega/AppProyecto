@@ -53,14 +53,14 @@ namespace AppProyecto
                 this.proveedor.contacto = this.txtContacto.Text.Trim();
                 this.proveedor.direccion = this.txtDireccion.Text.Trim();
                 this.proveedor.email = this.txtEmail.Text.Trim();
-
+                agregarProveedor(proveedor);
 
             }
             catch (Exception ex)
             {
             }
 
-
+            this.limpiarPantalla();
 
         }
 
