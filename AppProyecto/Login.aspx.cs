@@ -72,6 +72,7 @@ namespace AppProyecto
                     autorizado = true;
 
                     Session["tipoUsuario"] = this.entities.Vp_RolesUsuarios.FirstOrDefault(u => (u.email.Equals(email))).idRol;
+                    Session["elcarritoquetodolopuede"]=null;
                 }
 
                 

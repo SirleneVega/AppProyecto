@@ -13,6 +13,9 @@ namespace BLL
         public double subTotal { set; get; }
         
 
-
+        public void calcularSubTotal(double precio)
+        {
+            this.subTotal = this.cantidad * precio;
+        }
     }
 }
