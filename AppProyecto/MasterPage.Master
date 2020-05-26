@@ -3,62 +3,68 @@
 <!DOCTYPE html>
 
 <html>
-    
+
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Distribuciones del Pacífico</title>
 
     <link href="www/css/bootstrap.min.css" rel="stylesheet" />
     <link href="www/css/Styles.css" rel="stylesheet" />
 
-    <asp:ContentPlaceHolder ID="head" runat="server">    
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <header id="header">
-                  <div id="navegacionLogin" >
-                  <nav class="navbar navbar-expand-lg navbar-light color">
-                    <a class="navbar-brand" href="#">
-                        <img class="logo encima" src="www/css/img/logo.png" alt="Logo" /></a>
-                      <ul class="navbar-nav margenLogin" >
-                          <li class="nav-item">
-                              <asp:LoginName ID="loginName" CssClass="nav-link seleccion text-white" runat="server" />
-                              <div <% if (HttpContext.Current.User.Identity.IsAuthenticated)
-                                  {
-                                      Response.Write("style='display:none'");
-                                  }
-                                  %>><asp:LoginStatus CssClass='nav-link seleccion text-white' runat='server' /></div>
-                          </li>
-                          <li class="nav-item">
-                             <div <% if (!HttpContext.Current.User.Identity.IsAuthenticated)
-                                  {
-                                      Response.Write("style='display:none'");
-                                  }
-                                  %>><asp:LoginStatus CssClass='nav-link seleccion text-white' runat='server' /></div>
-                              <a class="nav-link text-white" href="Registrarme.aspx" 
-                                  <% if (HttpContext.Current.User.Identity.IsAuthenticated)
-                                  {
-                                      Response.Write("style='display:none'");
-                                  }
-                                  %>
-                                  >Registrarme</a>
-                          </li>
-                      </ul>
-                  </nav>
-            </div>
+                <div id="navegacionLogin">
+                    <nav class="navbar navbar-expand-lg navbar-light color">
+                        <a class="navbar-brand" href="#">
+                            <img class="logo encima" src="www/css/img/logo.png" alt="Logo" /></a>
+                        <ul class="navbar-nav margenLogin">
+                            <li class="nav-item">
+                                <asp:LoginName ID="loginName" CssClass="nav-link seleccion text-white" runat="server" />
+                                <div <% if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                    {
+                                        Response.Write("style='display:none'");
+                                    }
+                                  %>>
+                                    <asp:LoginStatus CssClass='nav-link seleccion text-white' runat='server' />
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div <% if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                                    {
+                                        Response.Write("style='display:none'");
+                                    }
+                                  %>>
+                                    <asp:LoginStatus CssClass='nav-link seleccion text-white' runat='server' />
+                                </div>
+                                <a class="nav-link text-white" href="Registrarme.aspx"
+                                    <% if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                    {
+                                        Response.Write("style='display:none'");
+                                    }
+                                  %>>Registrarme</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </header>
-          
+
             <nav class="navbar smart-scroll navbar-expand-lg navbar-dark bg-primary sticky-top">
-              <a class="navbar-brand" href="default.aspx" style="font-family:'Franklin Gothic'; font-size:18px">Distribuciones del pacífico</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="main_nav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active "> <a class="nav-link" href="default.aspx">Inicio </a> </li>
-                     <li class="nav-item dropdown">
+                <a class="navbar-brand" href="default.aspx" style="font-family: 'Franklin Gothic';
+                    font-size: 18px">Distribuciones del pacífico</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main_nav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active "><a class="nav-link" href="default.aspx">Inicio </a>
+                        </li>
+                        <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Producto</a>
                             <div class="dropdown-menu color">
@@ -67,123 +73,142 @@
                             </div>
                         </li>
 
-                        
-                    <li class="nav-item" >
-                        <div 
-                            <% if((int)Session["tipoUsuario"] == 1 || (int)Session["tipoUsuario"] == 2)
-                            {
-                                
-                            }
-                            else
-                            {
-                                Response.Write("style='display:none'");
-                            }
-                               %>
-                            >
-                            <a class="nav-link" href="Tienda.aspx">Tienda</a>
-                        </div>
 
-                          </li>
-                                   <li class="nav-item dropdown">            <div 
-                            <% if((int)Session["tipoUsuario"] == 2 || (int)Session["tipoUsuario"] == 3)
-                            {
-                                
-                            }
-                            else
-                            {
-                                Response.Write("style='display:none'");
-                            }
-                               %>
-                            >
+                        <li class="nav-item">
+                            <div
+                                <% if (validarPantalla((int)Session["tipoUsuario"], "Tienda"))
+                                {
+                                    Response.Write("style='display:none'");
+                                }
 
-                       
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Catálogos producto</a>
-                            <div class="dropdown-menu color">
-                                <a class="dropdown-item cambioColor text-white" href="AgregarProducto.aspx">Agregar productos</a>
+                               %>>
+                                <a class="nav-link" href="Tienda.aspx">Tienda</a>
                             </div>
-                        
 
-
-                                              </div>
-                                       </li>
-                    
-                     <li class="nav-item dropdown">
-                         <div 
-                            <% if((int)Session["tipoUsuario"] == 2 || (int)Session["tipoUsuario"] == 3)
-                            {
-                                
-                            }
-                            else
-                            {
-                                Response.Write("style='display:none'");
-                            }
-                               %>
-                            >
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Catálogos proveedor</a>
-                            <div class="dropdown-menu color">
-                                 <div 
-                            <% if((int)Session["tipoUsuario"] == 2 )
-                            {
-                                
-                            }
-                            else
-                            {
-                                Response.Write("style='display:none'");
-                            }
-                               %>
-                            >
-                                <a class="dropdown-item cambioColor text-white" href="CatalogoProveedores.aspx">Catalogo proveedores </a>
-                                    </div>
-                                 <a class="dropdown-item cambioColor text-white" href="AgregarProveedor.aspx">Agregar proveedores</a>
-                                <a class="dropdown-item cambioColor text-white" href="AsociarProveedor.aspx">Asociar proveedor</a>
-                            </div>
-                             </div>
                         </li>
-                     <li class="nav-item dropdown">
-                         <div 
-                            <% if((int)Session["tipoUsuario"] == 2 || (int)Session["tipoUsuario"] == 3)
-                            {
-                                
-                            }
-                            else
-                            {
-                                Response.Write("style='display:none'");
-                            }
-                               %>
-                            >
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" >Administrador</a>
-                            <div class="dropdown-menu color">
-                                
-                                <a class="dropdown-item cambioColor text-white" href="Ventas.aspx">Ventas realizadas</a>
-                                <div 
-                            <% if( (int)Session["tipoUsuario"] == 2)
-                            {
-                                
-                            }
-                            else
-                            {
-                                Response.Write("style='display:none'");
-                            }
-                               %>
-                            >
-                                 
-                            
-                                <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Asignar Rol</a>
-                                <a class="dropdown-item cambioColor text-white" href="AgregarRol.aspx">Agregar Rol</a>
-                                <a class="dropdown-item cambioColor text-white" href="CatalogoUsuarios.aspx">Catalogo Usuarios </a>
-                                    </div>
+                        <li class="nav-item dropdown">
+                            <div
+                                <% if (validarPantalla((int)Session["tipoUsuario"], "AgregarProducto"))
+                                {
+                                    Response.Write("style='display:none'");
+                                }
+
+                               %>>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Mantenimiento Productos</a>
+                                <div class="dropdown-menu color">
+                                    <a class="dropdown-item cambioColor text-white" href="AgregarProducto.aspx">Agregar
+                                        productos</a>
+                                </div>
+
+
+
                             </div>
-                         </div>
                         </li>
-                    <li class="nav-item" >
+
+                        <li class="nav-item dropdown">
+                            <div
+                                <% if (validarPantalla((int)Session["tipoUsuario"], "CatalogoProveedores")|| validarPantalla((int)Session["tipoUsuario"], "AgregarProveedor")|| validarPantalla((int)Session["tipoUsuario"], "AsociarProveedor") )
+                                {
+                                    Response.Write("style='display:none'");
+                                }
+                               %>>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Catálogos proveedor</a>
+                                <div class="dropdown-menu color">
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "CatalogoProveedores"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>
+                                     >
+                                        <a class="dropdown-item cambioColor text-white" href="CatalogoProveedores.aspx">Catalogo
+                                            proveedores </a>
+                                    </div>
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "AgregarProveedor"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                    <a class="dropdown-item cambioColor text-white" href="AgregarProveedor.aspx">Agregar
+                                        proveedores</a>
+                                    </div>
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "AsociarProveedor"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        >
+                                        <a class="dropdown-item cambioColor text-white" href="AsociarProveedor.aspx">Asociar
+                                            proveedor</a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <div
+                                <% 
+                                      if (validarPantalla((int)Session["tipoUsuario"], "Ventas")||validarPantalla((int)Session["tipoUsuario"], "AsignarRol") || validarPantalla((int)Session["tipoUsuario"], "AgregarRol") ||validarPantalla((int)Session["tipoUsuario"], "CatalogoUsuarios") )
+                                       {
+                                          Response.Write("style='display:none'");
+                                       }
+                                %>>
+                                >
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Administrador</a>
+                                <div class="dropdown-menu color">
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "Ventas"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        >
+                                        <a class="dropdown-item cambioColor text-white" href="Ventas.aspx">Ventas realizadas</a>
+                                    </div>
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "AsignarRol"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        >
+                                        <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Asignar Rol</a>
+                                    </div>
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "AgregarRol"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        >
+                                        <a class="dropdown-item cambioColor text-white" href="AgregarRol.aspx">Agregar Rol</a>
+                                    </div>
+                                    <div
+                                        <% if (validarPantalla((int)Session["tipoUsuario"], "CatalogoUsuarios"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        >
+                                        <a class="dropdown-item cambioColor text-white" href="CatalogoUsuarios.aspx">Catalogo
+                                            Usuarios </a>
+                                    </div>
+                                        
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Reporte</a>
-                          </li>
-                </ul>
-               
-              </div> <!-- navbar-collapse.// -->
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- navbar-collapse.// -->
             </nav>
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -193,8 +218,8 @@
     </form>
 
 
-<%--Piecito--%>
-<footer>
+    <%--Piecito--%>
+    <footer>
         <div class="piecito">
             <div class="row">
                 <div class="col-sm">
@@ -207,14 +232,14 @@
                 </div>
 
                 <%--Información--%>
-                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align:center">
+                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align: center">
                     <a href="Default.aspx">
                         <p>Distribuciones De Pacífico</p>
                     </a>
                 </div>
 
                 <%--Sucursales--%>
-                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align:center">
+                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align: center">
                     <br>
                     <strong>
                         <p>Sucursales</p>
@@ -225,10 +250,10 @@
                     <p>Esparza</p>
                     <p>Parrita</p>
                 </div>
-                
+
                 <%--Contactenos--%>
-                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align:center;">
-                        <strong>Encuentranos en nuestras Redes Sociales</strong>
+                <div class="col-sm" style="margin-top: auto; margin-bottom: auto; text-align: center;">
+                    <strong>Encuentranos en nuestras Redes Sociales</strong>
                     <br />
                     <br />
                     <a href="https://www.facebook.com/">
@@ -246,8 +271,8 @@
                 </div>
             </div>
         </div>
-        <p style="text-align:center">&copy; Copyright 2020, All Rights Reserved</p>
-</footer>
+        <p style="text-align: center">&copy; Copyright 2020, All Rights Reserved</p>
+    </footer>
 </body>
 <script src="www/js/jquery-3.4.1.min.js"></script>
 <script src="www/js/bootstrap.min.js"></script>
