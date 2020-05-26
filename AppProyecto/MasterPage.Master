@@ -80,7 +80,7 @@
                                 {
                                     Response.Write("style='display:none'");
                                 }
-
+                                   
                                %>>
                                 <a class="nav-link" href="Tienda.aspx">Tienda</a>
                             </div>
