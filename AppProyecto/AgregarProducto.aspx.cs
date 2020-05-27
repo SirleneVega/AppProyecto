@@ -56,7 +56,7 @@ namespace AppProyecto
                 this.producto.precioIV = int.Parse(this.txtPorcetajeIV.Text.Trim());
                 this.producto.precioIVA = int.Parse(this.txtPorcentajeIVA.Text.Trim());
                 this.producto.precioVenta = Double.Parse(this.txtPrecioVenta.Text.Trim());
-                this.producto.exento = this.txtExento.Text.Trim();
+                this.producto.exento = this.txtExcento.Text.Trim();
                 this.producto.unidadMedia = this.txtUnidad.Text.Trim();
                 this.producto.cantidad = int.Parse(this.txtCantidad.Text.Trim());
                 this.producto.Foto = this.producto.codigoDeBarra + "_" + this.fileUpload.FileName;

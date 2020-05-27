@@ -172,7 +172,11 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <asp:Label Font-Bold="true" Text="Exento" runat="server" />
-                                <asp:TextBox ID="txtExento" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
+                                <asp:DropDownList ID="txtExcento" runat="server">
+                                    <asp:ListItem Text="Seleccione una opcion" />
+                                    <asp:ListItem Text="Si" />
+                                    <asp:ListItem Text="No" />
+                                </asp:DropDownList>
                             </div>
 
                         </div>
@@ -182,7 +186,7 @@
                             <div class="col-md-10 text-left">
                                 <asp:RequiredFieldValidator ID="requiredTxtExento"
                                     ErrorMessage="Por favor ingresar el porcentaje de IVA"
-                                    ControlToValidate="txtExento"
+                                    ControlToValidate="txtExcento"
                                     runat="server"
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
@@ -192,7 +196,7 @@
             </div>
 
 
-            <%--exento y unidad de medida--%>
+            <%-- unidad de medida--%>
 
             <div class="row">
                 <div class="col-lg-6">
