@@ -79,6 +79,7 @@
     <Content Include="AgregarRol.aspx" />
     <Content Include="AsignarRol.aspx" />
     <Content Include="AsociarProveedor.aspx" />
+    <Content Include="CatalogoProductos.aspx" />
     <Content Include="CatalogoProveedores.aspx" />
     <Content Include="CatalogoUsuarios.aspx" />
     <Content Include="Comprar.aspx" />
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="AsociarProveedor.aspx.designer.cs">
       <DependentUpon>AsociarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoProductos.aspx.cs">
+      <DependentUpon>CatalogoProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CatalogoProductos.aspx.designer.cs">
+      <DependentUpon>CatalogoProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="CatalogoProveedores.aspx.cs">
       <DependentUpon>CatalogoProveedores.aspx</DependentUpon>

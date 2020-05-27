@@ -10,12 +10,12 @@
                 </div>
             </div>
         </div>
+   
 
-
-        <div class=" col-md-12">
+        <div class=" col-md-12 ">
             <h1 style="color: mediumaquamarine">__________________________________</h1>
         </div>
-
+    </div>
         <div class="container text-center" style="margin-top: 3%">
             <%--Codigo de barras, descripcion--%>
 

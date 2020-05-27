@@ -88,7 +88,8 @@
                         </li>
                         <li class="nav-item dropdown">
                             <div
-                                <% if (validarPantalla((int)Session["tipoUsuario"], "AgregarProducto"))
+                                <% if (validarPantalla((int)Session["tipoUsuario"], "CatalogoProductos")
+                                    && validarPantalla((int)Session["tipoUsuario"], "AgregarProveedor"))
                                 {
                                     Response.Write("style='display:none'");
                                 }
@@ -97,11 +98,27 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">Mantenimiento Productos</a>
                                 <div class="dropdown-menu color">
-                                    <a class="dropdown-item cambioColor text-white" href="AgregarProducto.aspx">Agregar
+                                     <div
+                                         <% if (validarPantalla((int)Session["tipoUsuario"], "CatalogoProductos"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        <a class="dropdown-item cambioColor text-white" href="CatalogoProductos.aspx">Catalogo 
+                                            Productos</a>
+                                    </div>
+                                    <div <% if (validarPantalla((int)Session["tipoUsuario"], "AgregarProducto"))
+                                            {
+                                             Response.Write("style='display:none'");
+                                            }
+                                        %>>
+                                        <a class="dropdown-item cambioColor text-white" href="AgregarProducto.aspx">Agregar
                                         productos</a>
+                                    </div>
+                                   
                                 </div>
 
-
+                                
 
                             </div>
                         </li>
