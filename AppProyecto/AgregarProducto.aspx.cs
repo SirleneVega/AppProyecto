@@ -96,7 +96,7 @@ namespace AppProyecto
                 tblProductos.cantidad = producto.cantidad;
                 tblProductos.foto = producto.Foto;
                 tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
-                tblProductos.precioVenta = producto.precioVenta.GetHashCode();
+                tblProductos.precioVenta = (Decimal)producto.precioVenta;
                 if (producto.estado == true)
                 {
                     tblProductos.estado = "Activo";
@@ -144,7 +144,7 @@ namespace AppProyecto
             this.txtPorcetajeIV.Text = "";
             this.txtEstadoP.Text = "";
             this.txtUnidad.Text = "";
-            this.txtExento.Text = "";
+            this.txtExcento.SelectedIndex = 0;
         }
 
 

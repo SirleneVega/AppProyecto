@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 //referencia
@@ -15,17 +16,18 @@ namespace AppProyecto
         DistribuidoraPEntities entities;
         protected void Page_Load(object sender, EventArgs e)
         {
-            entities = new DistribuidoraPEntities();
+            if (Session["tipoUsuario"] == null)
+            {
+                Session["tipoUsuario"] = 0;
+                FormsAuthentication.SignOut();
+                Response.Redirect("default.aspx");
+            }
+
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 Session["tipoUsuario"] = 0;
             }
 
-            if (Session["tipoUsuario"] == null){
-                Session["tipoUsuario"] = 0;
-
-            }
-            
         }
 
         public bool validarPantalla(int tipo, String pantalla)
