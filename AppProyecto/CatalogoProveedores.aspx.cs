@@ -15,6 +15,7 @@ namespace AppProyecto
         protected void Page_Load(object sender, EventArgs e)
         {
             entities = new DistribuidoraPEntities();
+
             try
             {
                 if (!HttpContext.Current.User.Identity.IsAuthenticated)
@@ -35,6 +36,33 @@ namespace AppProyecto
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        protected void lista_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            try
+            {
+                //calcular indice
+                int indice = Convert.ToInt32(e.CommandArgument);
+                //tomamos el indice
+                DataListItem item = this.lista.Items[indice];
+                Label lbl = (Label)item.FindControl("lblCedula");
+
+                if (e.CommandName.Equals("modificar"))
+                {
+                    Response.Redirect("AgregarProveedor.aspx?accion=M&cedulaLegal=" + lbl.Text);
+                }
+                if (e.CommandName.Equals("eliminar"))
+                {
+                    Response.Redirect("AgregarProveedor.aspx?accion=E&cedulaLegal=" + lbl.Text);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
