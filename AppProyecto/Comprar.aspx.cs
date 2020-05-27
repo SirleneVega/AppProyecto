@@ -44,7 +44,6 @@ namespace AppProyecto
             }
             detalleFacturas = (List<DetalleFactura>)Session["elcarritoquetodolopuede"];
 
-            insertFactura();
         }
 
         public void eliminar(string codigoDeBarra)
@@ -94,7 +93,6 @@ namespace AppProyecto
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

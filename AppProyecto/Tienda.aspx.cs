@@ -42,39 +42,108 @@ namespace AppProyecto
             {
                 throw ex;
             }
-            listaDetalleFactura = new List<DetalleFactura>();
             listaDetalleFactura = (List<DetalleFactura>)Session["elcarritoquetodolopuede"];
         }
 
+
+        //Carrito
         public void carrito(Producto produc, int cantidad)
         {
-            for (int i=0; i< listaDetalleFactura.Count(); i++)
+            try
             {
-                if (listaDetalleFactura.Exists(x => x.codigoDeBarra.Contains(produc.codigoDeBarra)))
+                if (listaDetalleFactura == null)
                 {
-                    listaDetalleFactura.RemoveAt(i);
-                    break;
+                    listaDetalleFactura = new List<DetalleFactura>();
                 }
+                for (int i = 0; i < listaDetalleFactura.Count(); i++)
+                {
+                    if (listaDetalleFactura.Exists(x => x.codigoDeBarra.Contains(produc.codigoDeBarra)))
+                    {
+                        listaDetalleFactura.RemoveAt(i);
+                        break;
+                    }
+                }
+                DetalleFactura dFactura = new DetalleFactura();
+                dFactura.codigoDeBarra = produc.codigoDeBarra;
+                dFactura.cantidad = cantidad;
+                dFactura.calcularSubTotal(produc.precioVenta);
+                listaDetalleFactura.Add(dFactura);
+                Session["elcarritoquetodolopuede"] = listaDetalleFactura;
             }
-            //foreach (Producto p in listaProductos)
-            //{
-            //    if (p.codigoDeBarra.Equals(produc.codigoDeBarra))
-            //    {
-            //        listaProductos.Remove(p);
-            //    }
-            //}
-            DetalleFactura dFactura = new DetalleFactura();
-            dFactura.codigoDeBarra = produc.codigoDeBarra;
-            dFactura.cantidad = cantidad;
-            dFactura.calcularSubTotal(produc.precioVenta);
-            listaDetalleFactura.Add(dFactura);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
+
+        //Factura
+        public void comprar()
+        {
+            
+            if (listaDetalleFactura != null)
+            {
+                Session["elcarritoquetodolopuede"] = listaDetalleFactura;
+                Response.Redirect("Comprar.aspx");
+            }
+            else
+            {
+                mensaje("Carrito vacio");
+            }
         }
 
 
-        public void comprar()
+        //llama al carrito
+        protected void lista_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            Session["elcarritoquetodolopuede"] = listaDetalleFactura;
-            Response.Redirect("Comprar.aspx");
+            int indiceItem = Convert.ToInt32(e.CommandArgument);
+            DataListItem item = this.lista.Items[indiceItem];
+            //Items
+            Label label = (Label)item.FindControl("lblCodigo");
+            TextBox textBox = (TextBox)item.FindControl("cantidad");
+
+            if (e.CommandName.Equals("agregar"))
+            {
+                int codigo = int.Parse(label.Text.Trim());
+                int cantidad = int.Parse(textBox.Text.Trim());
+                try
+                {
+                    Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals(""+codigo)));
+                    Producto producto = new Producto();
+                    producto.codigoDeBarra = produc.codigoBarra;
+                    producto.descripcion = produc.descripcion;
+                    producto.precioCompra = produc.precioCompra;
+                    producto.precioIV = (Double)(produc.porcentajeIV);
+                    producto.precioIVA = (Double)produc.porcentajeIVA;
+                    producto.precioVenta = (Double)produc.precioVenta;
+                    producto.exento = produc.exento;
+                    producto.unidadMedia = produc.unidadMedida;
+                    producto.estado = produc.estado;
+                    producto.cantidad = produc.cantidad;
+                    producto.foto = produc.foto;
+                    carrito(producto, cantidad);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            if (e.CommandName.Equals("finalizar"))
+            {
+                
+                comprar();
+            }
+        }
+
+        protected void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            comprar();
+        }
+
+        private void mensaje(string texto)
+        {
+            Response.Write("<script type='text/javascript'> alert('" + texto + "');</script>");
         }
     }
 }
