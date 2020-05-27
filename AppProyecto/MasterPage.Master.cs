@@ -16,6 +16,8 @@ namespace AppProyecto
         DistribuidoraPEntities entities;
         protected void Page_Load(object sender, EventArgs e)
         {
+            entities = new DistribuidoraPEntities(); 
+
             if (Session["tipoUsuario"] == null)
             {
                 Session["tipoUsuario"] = 0;
