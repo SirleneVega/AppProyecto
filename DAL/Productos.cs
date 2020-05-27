@@ -24,8 +24,6 @@ namespace DAL
         public string codigoBarra { get; set; }
         public string descripcion { get; set; }
         public int precioCompra { get; set; }
-        public int porcentajeIV { get; set; }
-        public int porcentajeIVA { get; set; }
         public decimal precioVenta { get; set; }
         public string exento { get; set; }
         public string unidadMedida { get; set; }
@@ -33,6 +31,8 @@ namespace DAL
         public int cantidad { get; set; }
         public int idCategoria { get; set; }
         public string foto { get; set; }
+        public Nullable<decimal> porcentajeIV { get; set; }
+        public Nullable<decimal> porcentajeIVA { get; set; }
     
         public virtual CategoriaProductos CategoriaProductos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

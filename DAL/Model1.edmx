@@ -59,8 +59,6 @@
           <Property Name="codigoBarra" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="precioCompra" Type="int" Nullable="false" />
-          <Property Name="porcentajeIV" Type="int" Nullable="false" />
-          <Property Name="porcentajeIVA" Type="int" Nullable="false" />
           <Property Name="precioVenta" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="exento" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="unidadMedida" Type="varchar" MaxLength="20" Nullable="false" />
@@ -68,6 +66,8 @@
           <Property Name="cantidad" Type="int" Nullable="false" />
           <Property Name="idCategoria" Type="int" Nullable="false" />
           <Property Name="foto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="porcentajeIV" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="porcentajeIVA" Type="decimal" Precision="12" Scale="2" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -392,7 +392,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           </Key>
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__idCat__48CFD27E" FromRole="CategoriaProductos" ToRole="Productos" />
+          <NavigationProperty Name="Productos" Relationship="DistribuidoraPModel.FK__Productos__idCat__48CFD27E" FromRole="CategoriaProductos" ToRole="Productos" />
         </EntityType>
         <EntityType Name="DetalleFacturas">
           <Key>
@@ -404,7 +404,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Name="cantidad" Type="Int32" Nullable="false" />
           <Property Name="subTotal" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <NavigationProperty Name="Facturas" Relationship="Self.FK__DetalleFa__idFac__4BAC3F29" FromRole="DetalleFacturas" ToRole="Facturas" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK__DetalleFa__idPro__4CA06362" FromRole="DetalleFacturas" ToRole="Productos" />
+          <NavigationProperty Name="Productos" Relationship="DistribuidoraPModel.FK__DetalleFa__idPro__4CA06362" FromRole="DetalleFacturas" ToRole="Productos" />
         </EntityType>
         <EntityType Name="Facturas">
           <Key>
@@ -431,26 +431,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="Self.RolPantallas" FromRole="Pantallas" ToRole="Roles" />
         </EntityType>
-        <EntityType Name="Productos">
-          <Key>
-            <PropertyRef Name="codigoBarra" />
-          </Key>
-          <Property Name="codigoBarra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="precioCompra" Type="Int32" Nullable="false" />
-          <Property Name="porcentajeIV" Type="Int32" Nullable="false" />
-          <Property Name="porcentajeIVA" Type="Int32" Nullable="false" />
-          <Property Name="precioVenta" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
-          <Property Name="exento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="unidadMedida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="idCategoria" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CategoriaProductos" Relationship="Self.FK__Productos__idCat__48CFD27E" FromRole="Productos" ToRole="CategoriaProductos" />
-          <NavigationProperty Name="DetalleFacturas" Relationship="Self.FK__DetalleFa__idPro__4CA06362" FromRole="Productos" ToRole="DetalleFacturas" />
-          <NavigationProperty Name="Proveedores" Relationship="Self.Inventarios" FromRole="Productos" ToRole="Proveedores" />
-          <Property Name="foto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Proveedores">
           <Key>
             <PropertyRef Name="cedulaLegal" />
@@ -461,7 +441,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.Inventarios" FromRole="Proveedores" ToRole="Productos" />
+          <NavigationProperty Name="Productos" Relationship="DistribuidoraPModel.Inventarios" FromRole="Proveedores" ToRole="Productos" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -498,18 +478,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Name="idRol" Type="Int32" Nullable="false" />
           <Property Name="rolDescripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Productos__idCat__48CFD27E">
-          <End Role="CategoriaProductos" Type="Self.CategoriaProductos" Multiplicity="1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CategoriaProductos">
-              <PropertyRef Name="idCategoria" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="idCategoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DetalleFa__idFac__4BAC3F29">
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
           <End Role="DetalleFacturas" Type="Self.DetalleFacturas" Multiplicity="*" />
@@ -519,18 +487,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             </Principal>
             <Dependent Role="DetalleFacturas">
               <PropertyRef Name="idFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DetalleFa__idPro__4CA06362">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
-          <End Role="DetalleFacturas" Type="Self.DetalleFacturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productos">
-              <PropertyRef Name="codigoBarra" />
-            </Principal>
-            <Dependent Role="DetalleFacturas">
-              <PropertyRef Name="idProducto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -546,10 +502,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Inventarios">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-        </Association>
         <Association Name="RolPantallas">
           <End Role="Pantallas" Type="Self.Pantallas" Multiplicity="*" />
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
@@ -563,30 +515,17 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <EntitySet Name="DetalleFacturas" EntityType="Self.DetalleFacturas" />
           <EntitySet Name="Facturas" EntityType="Self.Facturas" />
           <EntitySet Name="Pantallas" EntityType="Self.Pantallas" />
-          <EntitySet Name="Productos" EntityType="Self.Productos" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="Vp_RolesUsuarios" EntityType="Self.Vp_RolesUsuarios" />
-          <AssociationSet Name="FK__Productos__idCat__48CFD27E" Association="Self.FK__Productos__idCat__48CFD27E">
-            <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
           <AssociationSet Name="FK__DetalleFa__idFac__4BAC3F29" Association="Self.FK__DetalleFa__idFac__4BAC3F29">
             <End Role="Facturas" EntitySet="Facturas" />
-            <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DetalleFa__idPro__4CA06362" Association="Self.FK__DetalleFa__idPro__4CA06362">
-            <End Role="Productos" EntitySet="Productos" />
             <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
           </AssociationSet>
           <AssociationSet Name="FK__Facturas__idClie__440B1D61" Association="Self.FK__Facturas__idClie__440B1D61">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Facturas" EntitySet="Facturas" />
-          </AssociationSet>
-          <AssociationSet Name="Inventarios" Association="Self.Inventarios">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
           <AssociationSet Name="RolPantallas" Association="Self.RolPantallas">
             <End Role="Pantallas" EntitySet="Pantallas" />
@@ -631,6 +570,19 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Productos" EntityType="DistribuidoraPModel.Productos" />
+          <AssociationSet Name="FK__Productos__idCat__48CFD27E" Association="DistribuidoraPModel.FK__Productos__idCat__48CFD27E">
+            <End Role="CategoriaProductos" EntitySet="CategoriaProductos" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleFa__idPro__4CA06362" Association="DistribuidoraPModel.FK__DetalleFa__idPro__4CA06362">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="DetalleFacturas" EntitySet="DetalleFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="Inventarios" Association="DistribuidoraPModel.Inventarios">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Vp_PantallaUsuario">
           <Key>
@@ -669,6 +621,54 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="codigoBarra" />
+          </Key>
+          <Property Name="codigoBarra" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="precioCompra" Type="Int32" Nullable="false" />
+          <Property Name="precioVenta" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="exento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="unidadMedida" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="foto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="porcentajeIV" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="porcentajeIVA" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="CategoriaProductos" Relationship="DistribuidoraPModel.FK__Productos__idCat__48CFD27E" FromRole="Productos" ToRole="CategoriaProductos" />
+          <NavigationProperty Name="DetalleFacturas" Relationship="DistribuidoraPModel.FK__DetalleFa__idPro__4CA06362" FromRole="Productos" ToRole="DetalleFacturas" />
+          <NavigationProperty Name="Proveedores" Relationship="DistribuidoraPModel.Inventarios" FromRole="Productos" ToRole="Proveedores" />
+        </EntityType>
+        <Association Name="FK__Productos__idCat__48CFD27E">
+          <End Type="DistribuidoraPModel.CategoriaProductos" Role="CategoriaProductos" Multiplicity="1" />
+          <End Type="DistribuidoraPModel.Productos" Role="Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaProductos">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleFa__idPro__4CA06362">
+          <End Type="DistribuidoraPModel.Productos" Role="Productos" Multiplicity="1" />
+          <End Type="DistribuidoraPModel.DetalleFacturas" Role="DetalleFacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="codigoBarra" />
+            </Principal>
+            <Dependent Role="DetalleFacturas">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Inventarios">
+          <End Type="DistribuidoraPModel.Proveedores" Role="Proveedores" Multiplicity="*" />
+          <End Type="DistribuidoraPModel.Productos" Role="Productos" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -717,24 +717,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Productos">
-            <EntityTypeMapping TypeName="DistribuidoraPModel.Productos">
-              <MappingFragment StoreEntitySet="Productos">
-                <ScalarProperty Name="foto" ColumnName="foto" />
-                <ScalarProperty Name="codigoBarra" ColumnName="codigoBarra" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="precioCompra" ColumnName="precioCompra" />
-                <ScalarProperty Name="porcentajeIV" ColumnName="porcentajeIV" />
-                <ScalarProperty Name="porcentajeIVA" ColumnName="porcentajeIVA" />
-                <ScalarProperty Name="precioVenta" ColumnName="precioVenta" />
-                <ScalarProperty Name="exento" ColumnName="exento" />
-                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Proveedores">
             <EntityTypeMapping TypeName="DistribuidoraPModel.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
@@ -778,14 +760,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Inventarios" TypeName="DistribuidoraPModel.Inventarios" StoreEntitySet="Inventarios">
-            <EndProperty Name="Proveedores">
-              <ScalarProperty Name="cedulaLegal" ColumnName="idProveedor" />
-            </EndProperty>
-            <EndProperty Name="Productos">
-              <ScalarProperty Name="codigoBarra" ColumnName="idProducto" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="RolPantallas" TypeName="DistribuidoraPModel.RolPantallas" StoreEntitySet="RolPantallas">
             <EndProperty Name="Pantallas">
               <ScalarProperty Name="idPantalla" ColumnName="idPantalla" />
@@ -850,6 +824,32 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DistribuidoraPModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DistribuidoraPModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="porcentajeIVA" ColumnName="porcentajeIVA" />
+                <ScalarProperty Name="porcentajeIV" ColumnName="porcentajeIV" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="unidadMedida" ColumnName="unidadMedida" />
+                <ScalarProperty Name="exento" ColumnName="exento" />
+                <ScalarProperty Name="precioVenta" ColumnName="precioVenta" />
+                <ScalarProperty Name="precioCompra" ColumnName="precioCompra" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigoBarra" ColumnName="codigoBarra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Inventarios" TypeName="DistribuidoraPModel.Inventarios" StoreEntitySet="Inventarios">
+            <EndProperty Name="Productos">
+              <ScalarProperty Name="codigoBarra" ColumnName="idProducto" />
+            </EndProperty>
+            <EndProperty Name="Proveedores">
+              <ScalarProperty Name="cedulaLegal" ColumnName="idProveedor" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

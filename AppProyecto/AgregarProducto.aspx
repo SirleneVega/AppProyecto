@@ -23,11 +23,14 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <asp:Label Font-Bold="true" Text="Codigo de barras" runat="server" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
                                 <asp:TextBox ID="txtCodigo" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
                             </div>
-
                             <div class="col-md-1">
                                 <asp:RequiredFieldValidator ID="requiredTxtCodigo"
                                     ErrorMessage="Por favor ingresar el codigo de barras"
@@ -42,11 +45,14 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <asp:Label Font-Bold="true" Text="Descripcion del producto" runat="server" />
-                                <asp:TextBox ID="txtDescripcion" CssClass="form-control text-xl-center" runat="server" MaxLength="60" />
                             </div>
-
+                          </div>  
+                        <div class="row">
+                            <div class="col-md-11"> 
+                             <asp:TextBox ID="txtDescripcion" CssClass="form-control text-xl-center" runat="server" MaxLength="60" />
+                            </div>
                             <div class="col-md-1">
                                 <asp:RequiredFieldValidator ID="requiredTxtDescripcion"
                                     ErrorMessage="Por favor ingresar la descripcion"
@@ -60,84 +66,20 @@
             </div>
 
 
-            <%--cantidad precio y porcentajes--%>
-            <div class="row" style="margin-top: 1%">
-
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <asp:Label Font-Bold="true" Text="Precio del producto" runat="server" />
-                                <asp:TextBox ID="txtPrecio" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
-                            </div>
-
-                            <div class="col-md-1">
-                                <asp:RequiredFieldValidator ID="requiredTxtPrecio"
-                                    ErrorMessage="Por favor ingresar el precio del producto"
-                                    ControlToValidate="txtPrecio"
-                                    runat="server"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <asp:Label Font-Bold="true" Text="Porcentaje IV" runat="server" />
-                                <asp:TextBox ID="txtPorcetajeIV" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
-                            </div>
-
-                            <div class="col-md-1">
-                                <asp:RequiredFieldValidator ID="requiredTxtPorcetajeIV"
-                                    ErrorMessage="Por favor ingresar el porcentaje de IV"
-                                    ControlToValidate="txtPorcetajeIV"
-                                    runat="server"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <asp:Label Font-Bold="true" Text="Porcentaje IVA" runat="server" />
-                                <asp:TextBox ID="txtPorcentajeIVA" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-10 text-left">
-                                <asp:RequiredFieldValidator ID="requiredTxtPorcetajeIVA"
-                                    ErrorMessage="Por favor ingresar el porcentaje de IVA"
-                                    ControlToValidate="txtPorcentajeIVA"
-                                    runat="server"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <%--cantidad, exento, unidad de medida --%>
+            <%--cantidad, exento--%>
             <div class="row">
 
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <asp:Label Font-Bold="true" Text="Cantidad de productos" runat="server" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
                                 <asp:TextBox ID="txtCantidad" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
                             </div>
-
                             <div class="col-md-1">
                                 <asp:RequiredFieldValidator ID="requiredTxtCantidad"
                                     ErrorMessage="Por favor ingresar la cantidad de productos"
@@ -149,43 +91,24 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
-                                <asp:Label Font-Bold="true" Text="Precio Venta" runat="server" />
-                                <asp:TextBox ID="txtPrecioVenta" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
-                            </div>
-
-                            <div class="col-md-1">
-                                <asp:RequiredFieldValidator ID="requiredTxtPrecioVenta"
-                                    ErrorMessage="Por favor ingresar el precio venta"
-                                    ControlToValidate="txtPrecioVenta"
-                                    runat="server"
-                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            <div class="col-md-12">
+                                <asp:Label Font-Bold="true" Text="Exento" runat="server" />
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
-                                <asp:Label Font-Bold="true" Text="Exento" runat="server" />
-                                <asp:DropDownList ID="txtExcento" runat="server">
-                                    <asp:ListItem Text="Seleccione una opcion" />
-                                    <asp:ListItem Text="Si" />
+                            <div class="col-md-11">
+                                <asp:DropDownList ID="txtExcento" CssClass="form-control" runat="server">
+                                    <asp:ListItem Text="" />
+                                    <asp:ListItem Text="Sí" />
                                     <asp:ListItem Text="No" />
                                 </asp:DropDownList>
                             </div>
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-10 text-left">
+                            <div class="col-md-1">
                                 <asp:RequiredFieldValidator ID="requiredTxtExento"
-                                    ErrorMessage="Por favor ingresar el porcentaje de IVA"
+                                    ErrorMessage="Por favor ingresar excento"
                                     ControlToValidate="txtExcento"
                                     runat="server"
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -196,15 +119,26 @@
             </div>
 
 
-            <%-- unidad de medida--%>
+            <%-- unidad de medida, estado--%>
 
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <asp:Label Font-Bold="true" Text="Unidad de medida" runat="server" />
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class="col-md-11">
                                 <asp:TextBox ID="txtUnidad" CssClass="form-control text-xl-center" runat="server" MaxLength="15"/>
+                            </div>
+                            <div class="col-md-1">
+                                <asp:RequiredFieldValidator ID="RequiredFieldtxtUnidad"
+                                    ErrorMessage="Por favor ingresar la unidad de medida"
+                                    ControlToValidate="txtUnidad"
+                                    runat="server"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -213,19 +147,18 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
-                                <asp:Label Font-Bold="true" Text="Estado" runat="server" />
-                                <asp:DropDownList runat="server" ID="txtEstadoP" CssClass="form-control">
-                                    <asp:ListItem Text="Seleccione un estado" />
-                                    <asp:ListItem Text="Activo" />
-                                    <asp:ListItem Text="Inactito" />
-                                </asp:DropDownList>
+                            <div class="col-md-12">
+                                <asp:Label Font-Bold="true" Text="Precio de compra" runat="server" />                            
                             </div>
-
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <asp:TextBox ID="txtPrecioCompra" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" min="1"/>
+                            </div>
                             <div class="col-md-1">
                                 <asp:RequiredFieldValidator ID="requiredTxtEstadoP"
-                                    ErrorMessage="Por favor ingresar la descripcion"
-                                    ControlToValidate="txtEstadoP"
+                                    ErrorMessage="Por favor ingresar el precio de compra"
+                                    ControlToValidate="txtPrecioCompra"
                                     runat="server"
                                     ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
@@ -235,18 +168,20 @@
             </div>
 
 
-            <%--cantidad categoria, cantidad, foto--%>
-            <div class="row" style="margin-top: 1%">
-
+            <%--cantidad categoria, foto--%>
+            <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <asp:Label Font-Bold="true" Text="Categoria del producto" runat="server" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
                                 <asp:DropDownList runat="server" ID="dropCategoria" CssClass="form-control text-xl-center" DataSourceID="dataCategorias" DataTextField="descripcion" DataValueField="idCategoria">
                                 </asp:DropDownList>
                             </div>
-
                             <div class="col-md-1">
                                 <asp:RequiredFieldValidator ID="requiredDropCategoria"
                                     ErrorMessage="Por favor ingresar la categoria del producto"
@@ -258,35 +193,47 @@
                     </div>
                 </div>
 
-
-                <div class="col-lg-6" style="margin-top: 1.5%">
+                <div class="col-lg-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-12">
                                 <asp:Label Font-Bold="true" Text="Foto" runat="server" />
                             </div>
-                            <div class="col-md-9 text-left">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
                                 <asp:FileUpload Font-Bold="true" ID="fileUpload" runat="server" BorderStyle="None" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-10 text-left">
-                                <asp:ValidationSummary
-                                    ForeColor="Red" ID="validaciones"
-                                    DisplayMode="BulletList"
+                            <div class="col-md-1">
+                                <asp:RequiredFieldValidator ID="RequiredFieldFileUpload"
+                                    ErrorMessage="Por favor ingresar la foto"
+                                    ControlToValidate="fileUpload"
                                     runat="server"
-                                    HeaderText="Por favor agregar la foto"
-                                    Font-Names="verdana" Font-Size="12" />
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <%--validaciones--%>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <asp:ValidationSummary
+                            ForeColor="Red" ID="validaciones"
+                            DisplayMode="BulletList"
+                            runat="server"
+                            HeaderText="Por favor llenar los siguiente campos"
+                            Font-Names="verdana" 
+                            CssClass="text-left"
+                            Font-Size="12" />
+                    </div>
+                </div>
+            </div>
 
-             <div class="form-group mt-5">
+
+            <div class="form-group mt-5">
                 <div class="row">
                     <div class=" col-md-12">
                         <asp:Button ID="btnAgregar" CssClass="btn btn-outline-primary" Text="Agregar"
@@ -294,9 +241,6 @@
                     </div>
                 </div>
             </div>
-            
-        </div>
-
 
 
     </div>

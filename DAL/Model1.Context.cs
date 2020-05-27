@@ -31,13 +31,13 @@ namespace DAL
         public virtual DbSet<DetalleFacturas> DetalleFacturas { get; set; }
         public virtual DbSet<Facturas> Facturas { get; set; }
         public virtual DbSet<Pantallas> Pantallas { get; set; }
-        public virtual DbSet<Productos> Productos { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Vp_RolesUsuarios> Vp_RolesUsuarios { get; set; }
         public virtual DbSet<Vp_PantallaUsuario> Vp_PantallaUsuario { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Productos> Productos { get; set; }
     
         public virtual int calcularFactura(Nullable<int> idFactura)
         {

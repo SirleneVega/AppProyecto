@@ -51,33 +51,21 @@ namespace AppProyecto
             {
                 this.producto = new Producto();
                 this.producto.codigoDeBarra = this.txtCodigo.Text.Trim();
-                this.producto.Descripcion = this.txtDescripcion.Text.Trim();
-                this.producto.precioCompra = int.Parse(this.txtPrecio.Text.Trim());
-                this.producto.precioIV = int.Parse(this.txtPorcetajeIV.Text.Trim());
-                this.producto.precioIVA = int.Parse(this.txtPorcentajeIVA.Text.Trim());
-                this.producto.precioVenta = Double.Parse(this.txtPrecioVenta.Text.Trim());
-                this.producto.exento = this.txtExcento.Text.Trim();
-                this.producto.unidadMedia = this.txtUnidad.Text.Trim();
+                this.producto.descripcion = this.txtDescripcion.Text.Trim();
+                this.producto.precioCompra = int.Parse(this.txtPrecioCompra.Text.Trim());
+                this.producto.calcularPrecioVenta();
                 this.producto.cantidad = int.Parse(this.txtCantidad.Text.Trim());
-                this.producto.Foto = this.producto.codigoDeBarra + "_" + this.fileUpload.FileName;
-                if (this.txtEstadoP.Text.Trim().Equals("Activo"))
-                {
-                    this.producto.estado = true;
-                }
-                else
-                {
-                    this.producto.estado = false;
-                }
+                this.producto.calcularEstado();
+                this.producto.exento = this.txtExcento.Text.Trim();
+                this.producto.unidadMedia = this.txtUnidad.Text.Trim();    
+                this.producto.foto = this.producto.codigoDeBarra + "_" + this.fileUpload.FileName;
                 this.agregarProducto(this.producto);
-                if (this.fileUpload.HasFile)
-                {
-                    this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
-                }
-                this.limpiarPantalla();
-                
+                this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
+                this.limpiarPantalla();     
             }
             catch (Exception ex)
             {
+                throw ex;
             }
         }
 
@@ -87,25 +75,17 @@ namespace AppProyecto
             {
                 Productos tblProductos = new Productos();
                 tblProductos.codigoBarra = producto.codigoDeBarra;
-                tblProductos.descripcion = producto.Descripcion;
+                tblProductos.descripcion = producto.descripcion;
                 tblProductos.precioCompra = producto.precioCompra;
-                tblProductos.porcentajeIV = producto.precioIV;
-                tblProductos.porcentajeIVA = producto.precioIVA;
+                tblProductos.porcentajeIV = (Decimal)producto.precioIV;
+                tblProductos.porcentajeIVA = (Decimal)producto.precioIVA;
                 tblProductos.exento = producto.exento;
                 tblProductos.unidadMedida = producto.unidadMedia;
                 tblProductos.cantidad = producto.cantidad;
-                tblProductos.foto = producto.Foto;
+                tblProductos.foto = producto.foto;
                 tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
                 tblProductos.precioVenta = (Decimal)producto.precioVenta;
-                if (producto.estado == true)
-                {
-                    tblProductos.estado = "Activo";
-                }
-                else
-                {
-                    tblProductos.estado = "Inactivo";
-                }
-
+                tblProductos.estado = producto.estado;
 
                 this.entities.Productos.Add(tblProductos);
                 this.entities.SaveChanges();
@@ -137,17 +117,11 @@ namespace AppProyecto
         {
             this.txtCodigo.Text = "";
             this.txtCantidad.Text = "";
-            this.txtPrecioVenta.Text = "";
             this.txtDescripcion.Text = "";
-            this.txtPrecio.Text = "";
-            this.txtPorcentajeIVA.Text = "";
-            this.txtPorcetajeIV.Text = "";
-            this.txtEstadoP.Text = "";
+            this.txtPrecioCompra.Text = "";
             this.txtUnidad.Text = "";
             this.txtExcento.SelectedIndex = 0;
         }
-
-
         
     }
 }
