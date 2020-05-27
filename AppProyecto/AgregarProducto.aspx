@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <asp:Label Font-Bold="true" Text="Descripcion del producto" runat="server" />
-                                <asp:TextBox ID="txtDescripcion" CssClass="form-control text-xl-center" runat="server" MaxLength="15" />
+                                <asp:TextBox ID="txtDescripcion" CssClass="form-control text-xl-center" runat="server" MaxLength="60" />
                             </div>
 
                             <div class="col-md-1">
@@ -200,7 +200,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <asp:Label Font-Bold="true" Text="Unidad de medida" runat="server" />
-                                <asp:TextBox ID="txtUnidad" CssClass="form-control text-xl-center" runat="server" MaxLength="15" TextMode="Number" />
+                                <asp:TextBox ID="txtUnidad" CssClass="form-control text-xl-center" runat="server" MaxLength="15"/>
                             </div>
                         </div>
                     </div>
@@ -239,8 +239,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <asp:Label Font-Bold="true" Text="Categoria del producto" runat="server" />
-                                <asp:DropDownList runat="server" ID="dropCategoria" CssClass="form-control text-xl-center">
-                                    
+                                <asp:DropDownList runat="server" ID="dropCategoria" CssClass="form-control text-xl-center" DataSourceID="dataCategorias" DataTextField="descripcion" DataValueField="idCategoria">
                                 </asp:DropDownList>
                             </div>
 
@@ -298,6 +297,7 @@
 
     </div>
 
+    <asp:SqlDataSource runat="server" ID="dataCategorias" ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>' SelectCommand="SELECT [idCategoria], [descripcion] FROM [CategoriaProductos]" />
 
 
 </asp:Content>

@@ -19,9 +19,7 @@ namespace AppProyecto
         DistribuidoraPEntities entities;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                llenarDropDown();
-            }
+           
             entities = new DistribuidoraPEntities();
             try
             {
@@ -75,6 +73,7 @@ namespace AppProyecto
                 {
                     this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
                 }
+                this.limpiarPantalla();
                 
             }
             catch (Exception ex)
@@ -96,7 +95,7 @@ namespace AppProyecto
                 tblProductos.unidadMedida = producto.unidadMedia;
                 tblProductos.cantidad = producto.cantidad;
                 tblProductos.foto = producto.Foto;
-                //tblProductos.idCategoria = dropCategoria.SelectedIndex();
+                tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
                 tblProductos.precioVenta = producto.precioVenta.GetHashCode();
                 if (producto.estado == true)
                 {
@@ -149,35 +148,6 @@ namespace AppProyecto
         }
 
 
-        public DataSet ConsultarBD(string strSQL) {
-            string strConexion = "Data Source=localhost/SQLEXPRESS;Initial Catalog=DistribuidoraP;User ID=usuarioDistribuidora;Password=ucr2020;";
-            SqlConnection con = new SqlConnection(strConexion);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(strSQL, con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            con.Close();
-            return ds;
-        }
-
-        private void llenarDropDown()
-        {
-            try
-            {
-                dropCategoria.DataSource = ("SELECT * FROM CategoriaProductos");
-                dropCategoria.DataTextField = "descripcion";
-                dropCategoria.DataValueField = "idCategoria";
-                dropCategoria.DataBind();
-
-                dropCategoria.Items.Insert(0, new ListItem("[Seleccione una categoria]", "0"));
-            }
-            catch (Exception)
-            {
-
-               
-            }
-            
-        }
+        
     }
 }
