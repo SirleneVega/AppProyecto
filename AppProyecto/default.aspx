@@ -11,7 +11,7 @@
          <%-- Insertar imagenes para carousel --%>
        <img src="www/css/img/1.jfif" class="d-block w-100 imganesCarousel imganesCarousel" alt="..." >
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item"> 
          <%-- Insertar imagenes para carousel --%>
       <img src="www/css/img/1.jfif" class="d-block w-100 imganesCarousel" alt="...">
     </div>
