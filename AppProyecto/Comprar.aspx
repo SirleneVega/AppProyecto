@@ -47,46 +47,53 @@
                                  "<td>" + detalle.cantidad + "</td>" +
                                  "<td>" + detalle.subTotal + "</td>" +
                                  "<td>" +
-                                     "<button type='button' class='btn btn-outline-info' ID='idBTN" + contador + "' data-toggle='modal' data-target='#ID"+this.contador+"'>Modificar</button>" +
+                                     "<button type='button' class='btn btn-outline-info' ID='idBTN" + detalle.codigoDeBarra + "' data-toggle='modal' data-target='#ID"+detalle.codigoDeBarra+"'>Modificar</button>" +
                                  "</td>" +
-                             "</tr>");
+                             "</tr>"+
+                             "<div  ID='ID"+detalle.codigoDeBarra+"' class='modal' tabindex='-1' role='dialog'>"+
+                                "<div class='modal-dialog modal-dialog-centered' role='document'>"+
+                                    "<div class='modal-content'>"+
+                                        "<div class='modal-header'>"+
+                                            "<h5 class='modal-title'>Seleccione la acción a realizar</h5>"+
+                                           " <button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+                                                "<span aria-hidden='true'></span>"+
+                                           " </button>"+
+                                            "<button type='button' class='close' data-dismiss='modal' aria-label='close'>"+
+                                                "<span aria-hidden='true'>&times;</span>"+
+                                           " </button>"+
+                                       " </div>"+
+                                        "<div class='modal-body'>"+
+
+                                        "</div>"+
+                                        "<div class='modal-footer'>"+
+                                            "<asp:Button ID='btnAgregar' Text='Agregar al carrito' runat='server' "+
+                                               " CommandName='agregar'"+
+                                               " CommandArgument=''"+
+                                               " CssClass='btn btn-outline-primary' />"+
+                                            "<asp:Button ID='btnFinalizar' Text='Finalizar compra' runat='server' "+
+                                               " CommandName='finalizar'"+
+                                               " CommandArgument=''"+
+                                                "CssClass='btn btn-outline-info' />"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>"+
+                           " </div>"
+                             
+                             
+                             );
+
+
+
                             this.contador = this.contador + 1;
                         }
                          %>
 
 
                 </tbody>
-
+               
             </table>
                        <%--modal de acciones--%>
-                            <div <% Response.Write("ID='ID'"+idContador()); %> class="modal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Seleccione la acción a realizar</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true"></span>
-                                            </button>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
 
-                                        </div>
-                                        <div class="modal-footer">
-                                            <asp:Button ID="btnAgregar" Text="Agregar al carrito" runat="server" 
-                                                CommandName="agregar"
-                                                CommandArgument=""
-                                                CssClass="btn btn-outline-primary" />
-                                            <asp:Button ID="btnFinalizar" Text="Finalizar compra" runat="server" 
-                                                CommandName="finalizar"
-                                                CommandArgument=""
-                                                CssClass="btn btn-outline-info" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
         </div>
     </div>

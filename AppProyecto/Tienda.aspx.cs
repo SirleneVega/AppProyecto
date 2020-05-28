@@ -106,7 +106,7 @@ namespace AppProyecto
             int codigo = int.Parse(label.Text.Trim());
             int cantidad = int.Parse(textBox.Text.Trim());
 
-            Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals("" + codigo)));
+            Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals("" +codigo)));
 
             if (e.CommandName.Equals("agregar"))
             {
