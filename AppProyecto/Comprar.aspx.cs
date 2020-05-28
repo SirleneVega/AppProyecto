@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Web;
@@ -16,9 +18,6 @@ namespace AppProyecto
         //atributos
         DistribuidoraPEntities entities;
         public List<DetalleFactura> detalleFacturas;
-        public int contador;
-        public int contador2=0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             entities = new DistribuidoraPEntities();
@@ -49,12 +48,37 @@ namespace AppProyecto
                 Response.Redirect("Tienda.aspx");
             }
             detalleFacturas = (List<DetalleFactura>)Session["elcarritoquetodolopuede"];
-            this.contador = 0;
+            
+            if (!IsPostBack)
+            {
+                myDataList.DataSource = CreateDataSource();
+                myDataList.DataBind();
+            }        
         }
 
-        public int idContador()
+        public ICollection CreateDataSource()
         {
-            return contador;
+            DataTable myDataTable = new DataTable();
+            DataRow myDataRow;
+
+            myDataTable.Columns.Add(new DataColumn("Codigo", typeof(string)));
+            myDataTable.Columns.Add(new DataColumn("Descripción", typeof(string)));
+            myDataTable.Columns.Add(new DataColumn("Precio por unidad", typeof(int)));
+            myDataTable.Columns.Add(new DataColumn("Cantidad", typeof(int)));
+            myDataTable.Columns.Add(new DataColumn("Sub toal", typeof(double)));
+
+            foreach (DetalleFactura detalle in detalleFacturas)
+            {
+                myDataRow = myDataTable.NewRow();
+                myDataRow[0] = detalle.codigoDeBarra;
+                myDataRow[1] = detalle.descripcion;
+                myDataRow[2] = (detalle.subTotal) / (detalle.cantidad);
+                myDataRow[3] = (detalle.cantidad);
+                myDataRow[4] = (detalle.subTotal);
+                myDataTable.Rows.Add(myDataRow);
+            }
+            DataView dataView = new DataView(myDataTable);
+            return dataView;
         }
 
         public void eliminar(string codigoDeBarra)
@@ -64,9 +88,14 @@ namespace AppProyecto
                 if (dfactura.codigoDeBarra.Equals(codigoDeBarra))
                 {
                     detalleFacturas.Remove(dfactura);
+                    break;
                 }
             }
             Session["elcarritoquetodolopuede"] = detalleFacturas;
+            if (detalleFacturas.Count == 0)
+            {
+                Session["elcarritoquetodolopuede"] = null;
+            }
         }
 
         public void insertFactura()
@@ -113,9 +142,41 @@ namespace AppProyecto
             Response.Write("<script type='text/javascript'> alert('" + texto + "');</script>");
         }
 
-        protected void listatabla_ItemCommand(object source, DataListCommandEventArgs e)
+        protected void myDataList_ItemCommand(object source, DataListCommandEventArgs e)
         {
+            try
+            {
+                int indiceItem = Convert.ToInt32(e.CommandArgument);
 
+                DataListItem item = this.myDataList.Items[indiceItem];
+                //Items
+                Label label = (Label)item.FindControl("idCodigo");
+                String codigo = label.Text.Trim();
+                if (e.CommandName.Equals("agregar"))
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+                if (e.CommandName.Equals("eliminar"))
+                {
+                    eliminar(codigo);
+                    
+                    Response.Redirect("Comprar.aspx");
+                    mensaje("Producto eliminado");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

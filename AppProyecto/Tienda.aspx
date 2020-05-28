@@ -141,10 +141,6 @@
                                                         <asp:TextBox ID="cantidad" TextMode="Number" CssClass="form-control" min="1" max='<%# DataBinder.Eval(Container.DataItem,"cantidad")%>' runat="server" />
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <%--<asp:RequiredFieldValidator ID="requiredCantidad"
-                                                            ControlToValidate="cantidad"
-                                                            runat="server"
-                                                            ForeColor="Red">*</asp:RequiredFieldValidator>--%>
                                                     </div>
                                                 </div>
                                             </div>

@@ -102,29 +102,38 @@ namespace AppProyecto
             //Items
             Label label = (Label)item.FindControl("lblCodigo");
             TextBox textBox = (TextBox)item.FindControl("cantidad");
+            RequiredFieldValidator requiredFieldValidator = (RequiredFieldValidator)item.FindControl("requiredCantidad");
 
             int codigo = int.Parse(label.Text.Trim());
-            int cantidad = int.Parse(textBox.Text.Trim());
-
-            Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals("" +codigo)));
-
-            if (e.CommandName.Equals("agregar"))
+            if (textBox.Text.Trim().Equals(""))
             {
-                try
+                mensaje("La cantidad no puede estar vacia");
+            }
+            else
+            {
+                int cantidad = int.Parse(textBox.Text.Trim());
+
+                Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals("" + codigo)));
+
+                if (e.CommandName.Equals("agregar"))
+                {
+                    try
+                    {
+                        carrito(llenarProducto(produc), cantidad);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+
+                if (e.CommandName.Equals("finalizar"))
                 {
                     carrito(llenarProducto(produc), cantidad);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
+                    comprar();
                 }
             }
-
-            if (e.CommandName.Equals("finalizar"))
-            {
-                carrito(llenarProducto(produc), cantidad);
-                comprar();
-            }
+            
         }
 
         public Producto llenarProducto(Productos productos)
