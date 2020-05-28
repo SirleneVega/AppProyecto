@@ -535,9 +535,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Roles" EntitySet="Roles" />
           </AssociationSet>
-          <FunctionImport Name="calcularFactura">
-          <Parameter Name="idFactura" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="Vp_PantallaUsuario" EntityType="DistribuidoraPModel.Vp_PantallaUsuario" />
           <EntitySet Name="sysdiagrams" EntityType="DistribuidoraPModel.sysdiagrams" />
           <FunctionImport Name="sp_alterdiagram">
@@ -583,6 +580,9 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
+          <FunctionImport Name="calcularFactura">
+            <Parameter Name="idFactura" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Vp_PantallaUsuario">
           <Key>
@@ -776,7 +776,6 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
               <ScalarProperty Name="idRol" ColumnName="idRol" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="calcularFactura" FunctionName="DistribuidoraPModel.Store.calcularFactura" />
           <EntitySetMapping Name="Vp_PantallaUsuario">
             <EntityTypeMapping TypeName="DistribuidoraPModel.Vp_PantallaUsuario">
               <MappingFragment StoreEntitySet="Vp_PantallaUsuario">
@@ -850,6 +849,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
               <ScalarProperty Name="cedulaLegal" ColumnName="idProveedor" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="calcularFactura" FunctionName="DistribuidoraPModel.Store.calcularFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

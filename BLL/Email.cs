@@ -77,9 +77,9 @@ namespace BLL
                 smtp.Dispose();
             }
 
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
         }
         public void generaPdf(Usuario u, string urlCrearPdf, String urlImagen)

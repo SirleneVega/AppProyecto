@@ -133,6 +133,7 @@ namespace AppProyecto
             }
             catch (Exception ex)
             {
+                throw ex;
             }
             
 

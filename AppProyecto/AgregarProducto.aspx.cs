@@ -142,7 +142,6 @@ namespace AppProyecto
                 tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
                 tblProductos.precioVenta = (Decimal)producto.precioVenta;
                 tblProductos.estado = producto.estado;
-
                 this.entities.Productos.Add(tblProductos);
                 this.entities.SaveChanges();
 
@@ -223,6 +222,7 @@ namespace AppProyecto
                     tblProductos.codigoBarra = producto.codigoDeBarra;
                     tblProductos.descripcion = producto.descripcion;
                     tblProductos.cantidad = producto.cantidad;
+                    tblProductos.estado = producto.estado;
                     tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
                     tblProductos.precioCompra = producto.precioCompra;
                     tblProductos.unidadMedida = producto.unidadMedia;

@@ -42,9 +42,37 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <asp:Label Text='<%# DataBinder.Eval(Container.DataItem,"Descripción")%>' runat="server" />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <asp:Label Text='<%# DataBinder.Eval(Container.DataItem,"Descripción")%>' runat="server" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <asp:Label Text="Existencias" runat="server" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <asp:Label Text='<%# this.maxCantidad(DataBinder.Eval(Container.DataItem,"Codigo").ToString())%>' runat="server" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <asp:Label Text="Seleccione la  nueva cantidad" runat="server" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <asp:TextBox ID="cantidad" TextMode="Number" CssClass="form-control" min="1" max='<%# this.maxCantidad(DataBinder.Eval(Container.DataItem,"Codigo").ToString())%>' runat="server" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
                                         </div>
                                         <div class="modal-footer">
+                                            <asp:Button ID="btnModificar" Text="Modificar" runat="server" 
+                                                CommandName="modificar"
+                                                CommandArgument='<%# ((DataListItem)Container).ItemIndex%>'
+                                                CssClass="btn btn-outline-primary" />
                                             <asp:Button ID="btnFinalizar" Text="Eliminar" runat="server" 
                                                 CommandName="eliminar"
                                                 CommandArgument='<%# ((DataListItem)Container).ItemIndex%>'
@@ -55,9 +83,81 @@
                             </div>
 
                     </ItemTemplate>
-                </asp:DataList>
+        </asp:DataList>
+
+
+        <div class="container" style="margin-top:3%;">
+            <div class="form-group text-center">
+                <div>
+                    <h2>Selecione su metodo de pago</h2>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <asp:Label Text="Metodo de pago" runat="server" />
+                        </div>
+                        <div class="col-md-5 ">
+                            <asp:DropDownList ID="dropMetodoPago" CssClass="form-control" runat="server" OnSelectedIndexChanged="dropMetodoPago_SelectedIndexChanged" AutoPostBack="true">
+                                <asp:ListItem Text="" Selected="True" />
+                                <asp:ListItem Text="Efectivo" />
+                                <asp:ListItem Text="Tarjeta" />
+                                <asp:ListItem Text="Cheque" />
+                            </asp:DropDownList>
+                        </div>
+                        <div class="col-md-1">
+                                <asp:RequiredFieldValidator ID="requeriedMetodoPago"
+                                    ControlToValidate="dropMetodoPago"
+                                    runat="server"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </div>
+                    </div>
+                </div>
+
+                <div id="idMetodoP" runat="server">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <asp:Label Text="Numero de cheque" runat="server" />
+                            </div>
+                            <div class="col-md-5">
+                                <asp:TextBox ID="txtNumeroCheque" TextMode="Number" CssClass="form-control" runat="server" />
+                            </div>
+                            <div class="col-md-1">
+                                <asp:RequiredFieldValidator ID="requeriedNumero"
+                                    ControlToValidate="txtNumeroCheque"
+                                    runat="server"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <asp:Label Text="Banco" runat="server" />
+                            </div>
+                            <div class="col-md-5 ">
+                                <asp:DropDownList ID="dropBancos" CssClass="form-control" runat="server">
+                                    <asp:ListItem Text="" />
+                                    <asp:ListItem Text="Banco de Costa Rica" />
+                                    <asp:ListItem Text="Banco Nacional" />
+                                    <asp:ListItem Text="Banco Popular" />
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-1">
+                                <asp:RequiredFieldValidator ID="requeriedBanco"
+                                    ControlToValidate="dropBancos"
+                                    runat="server"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <asp:Button ID="btnRealizarCompra" Text="Finalizar compra" CssClass="btn btn-outline-primary" OnClick="btnRealizarCompra_Click" runat="server" />
+            </div>
+        </div>
+
     </div>
-                
+
 
 </asp:Content>
 

@@ -12,8 +12,10 @@ namespace BLL
         public double subTotal { set; get; }
         public double montoImpuesto { set; get; }
         public double descuento { set; get; }
-        public double motoTotal { set; get; }
+        public double montoTotal { set; get; }
         public String idCliente { set; get; }
-
+        public double transporte { set; get; }
+        public int numeroCheque { set; get; }
+        public string entidadBancaria { set; get; }
     }
 }

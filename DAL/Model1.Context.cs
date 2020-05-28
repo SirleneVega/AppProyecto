@@ -39,15 +39,6 @@ namespace DAL
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }
     
-        public virtual int calcularFactura(Nullable<int> idFactura)
-        {
-            var idFacturaParameter = idFactura.HasValue ?
-                new ObjectParameter("idFactura", idFactura) :
-                new ObjectParameter("idFactura", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calcularFactura", idFacturaParameter);
-        }
-    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
@@ -149,6 +140,15 @@ namespace DAL
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual int calcularFactura(Nullable<int> idFactura)
+        {
+            var idFacturaParameter = idFactura.HasValue ?
+                new ObjectParameter("idFactura", idFactura) :
+                new ObjectParameter("idFactura", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calcularFactura", idFacturaParameter);
         }
     }
 }
