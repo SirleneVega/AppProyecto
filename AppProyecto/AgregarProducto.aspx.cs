@@ -91,10 +91,33 @@ namespace AppProyecto
                 this.producto.exento = this.txtExcento.Text.Trim();
                 this.producto.unidadMedia = this.txtUnidad.Text.Trim();    
                 this.producto.foto = this.producto.codigoDeBarra + "_" + this.fileUpload.FileName;
-                this.agregarProducto(this.producto);
-                this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
 
-                this.limpiarPantalla();     
+                switch (this.funcion)
+                {
+                    case "R":
+                        this.agregarProducto(producto);
+                        if (this.fileUpload.HasFile)
+                        {
+                            this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
+                        }
+                        this.mensaje("Producto agregado correctamente");
+                        break;
+                    case "M":
+                        this.modificar(this.producto);
+                        if (this.fileUpload.HasFile)
+                        {
+                            this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
+                        }
+                        this.mensaje("Producto modificado correctamente");
+                        break;
+                    case "E":
+                        this.eliminar(this.producto.codigoDeBarra);
+                        this.mensaje("Producto eliminado correctamente");
+                        break;
+
+                }
+
+                this.limpiarPantalla();
             }
             catch (Exception ex)
             {
@@ -121,32 +144,8 @@ namespace AppProyecto
                 tblProductos.estado = producto.estado;
 
                 this.entities.Productos.Add(tblProductos);
-                switch (this.funcion)
-                {
-                    case "R":
-                        agregarProducto(producto);
-                        if (this.fileUpload.HasFile)
-                        {
-                            this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
-                        }
-                        this.mensaje("Proveedor agregado correctamente");
-                        break;
-                    case "M":
-                        this.modificar(this.producto);
-                        if (this.fileUpload.HasFile)
-                        {
-                            this.subirFoto(this.producto.codigoDeBarra, this.fileUpload.PostedFile);
-                        }
-                        this.mensaje("Proveedor modificado correctamente");
-                        break;
-                    case "E":
-                        this.eliminar(this.producto.codigoDeBarra);
-                        this.mensaje("Proveedor eliminado correctamente");
-                        break;
+                this.entities.SaveChanges();
 
-                }
-                this.limpiarPantalla();
-                
             }
             catch (Exception ex)
             {
