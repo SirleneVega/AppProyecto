@@ -15,10 +15,6 @@ namespace AppProyecto
         protected void Page_Load(object sender, EventArgs e)
         {
             entities = new DistribuidoraPEntities();
-
-
-
-
             try
             {
                 if (!HttpContext.Current.User.Identity.IsAuthenticated)
@@ -30,27 +26,6 @@ namespace AppProyecto
                     int tipo = (int)Session["tipoUsuario"];
                     Vp_PantallaUsuario pantalla = this.entities.Vp_PantallaUsuario.FirstOrDefault(u => (u.idRol.Equals(tipo)
                         & u.descripcionPantalla.Equals("CatalogoProductos")));
-                    if (pantalla == null)
-                    {
-                        Response.Redirect("Default.aspx");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            try
-            {
-                if (!HttpContext.Current.User.Identity.IsAuthenticated)
-                {
-                    Response.Redirect("Default.aspx");
-                }
-                else
-                {
-                    int tipo = (int)Session["tipoUsuario"];
-                    Vp_PantallaUsuario pantalla = this.entities.Vp_PantallaUsuario.FirstOrDefault(u => (u.idRol.Equals(tipo)
-                        & u.descripcionPantalla.Equals("AgregarProductos")));
                     if (pantalla == null)
                     {
                         Response.Redirect("Default.aspx");

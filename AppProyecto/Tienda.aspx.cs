@@ -66,6 +66,7 @@ namespace AppProyecto
                 DetalleFactura dFactura = new DetalleFactura();
                 dFactura.codigoDeBarra = produc.codigoDeBarra;
                 dFactura.cantidad = cantidad;
+                dFactura.descripcion = produc.descripcion;
                 dFactura.calcularSubTotal(produc.precioVenta);
                 listaDetalleFactura.Add(dFactura);
                 Session["elcarritoquetodolopuede"] = listaDetalleFactura;
@@ -102,26 +103,16 @@ namespace AppProyecto
             Label label = (Label)item.FindControl("lblCodigo");
             TextBox textBox = (TextBox)item.FindControl("cantidad");
 
+            int codigo = int.Parse(label.Text.Trim());
+            int cantidad = int.Parse(textBox.Text.Trim());
+
+            Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals("" + codigo)));
+
             if (e.CommandName.Equals("agregar"))
             {
-                int codigo = int.Parse(label.Text.Trim());
-                int cantidad = int.Parse(textBox.Text.Trim());
                 try
                 {
-                    Productos produc = this.entities.Productos.FirstOrDefault(u => (u.codigoBarra.Equals(""+codigo)));
-                    Producto producto = new Producto();
-                    producto.codigoDeBarra = produc.codigoBarra;
-                    producto.descripcion = produc.descripcion;
-                    producto.precioCompra = produc.precioCompra;
-                    producto.precioIV = (Double)(produc.porcentajeIV);
-                    producto.precioIVA = (Double)produc.porcentajeIVA;
-                    producto.precioVenta = (Double)produc.precioVenta;
-                    producto.exento = produc.exento;
-                    producto.unidadMedia = produc.unidadMedida;
-                    producto.estado = produc.estado;
-                    producto.cantidad = produc.cantidad;
-                    producto.foto = produc.foto;
-                    carrito(producto, cantidad);
+                    carrito(llenarProducto(produc), cantidad);
                 }
                 catch (Exception ex)
                 {
@@ -131,9 +122,26 @@ namespace AppProyecto
 
             if (e.CommandName.Equals("finalizar"))
             {
-                
+                carrito(llenarProducto(produc), cantidad);
                 comprar();
             }
+        }
+
+        public Producto llenarProducto(Productos productos)
+        {
+            Producto producto = new Producto();
+            producto.codigoDeBarra = productos.codigoBarra;
+            producto.descripcion = productos.descripcion;
+            producto.precioCompra = productos.precioCompra;
+            producto.precioIV = (Double)(productos.porcentajeIV);
+            producto.precioIVA = (Double)productos.porcentajeIVA;
+            producto.precioVenta = (Double)productos.precioVenta;
+            producto.exento = productos.exento;
+            producto.unidadMedia = productos.unidadMedida;
+            producto.estado = productos.estado;
+            producto.cantidad = productos.cantidad;
+            producto.foto = productos.foto;
+            return producto;
         }
 
         protected void btnFinalizar_Click(object sender, EventArgs e)

@@ -15,8 +15,9 @@ namespace AppProyecto
     {
         //atributos
         DistribuidoraPEntities entities;
-        List<DetalleFactura> detalleFacturas; 
-
+        public List<DetalleFactura> detalleFacturas;
+        public int contador;
+        public int contador2=0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,8 +43,18 @@ namespace AppProyecto
             {
                 throw ex;
             }
+            if (Session["elcarritoquetodolopuede"] == null)
+            {
+                mensaje("Carrito vacio");
+                Response.Redirect("Tienda.aspx");
+            }
             detalleFacturas = (List<DetalleFactura>)Session["elcarritoquetodolopuede"];
+            this.contador = 0;
+        }
 
+        public int idContador()
+        {
+            return contador;
         }
 
         public void eliminar(string codigoDeBarra)
@@ -95,6 +106,16 @@ namespace AppProyecto
             {
                 throw ex;
             }
+        }
+
+        private void mensaje(string texto)
+        {
+            Response.Write("<script type='text/javascript'> alert('" + texto + "');</script>");
+        }
+
+        protected void listatabla_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+
         }
     }
 }
