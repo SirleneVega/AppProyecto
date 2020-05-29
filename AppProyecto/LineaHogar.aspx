@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="LineaBlanca.aspx.cs" Inherits="AppProyecto.LineaBlanca" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="LineaHogar.aspx.cs" Inherits="AppProyecto.LineaHogar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,21 +10,28 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="card-title">Linea Blanca</h2>
+                                <h2 class="card-title">Linea Hogar</h2>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                
+
+
+
+
+
+
+
+
+
                 <div class="card-body">
-                  
                     <asp:DataList
-                        ID="lista"
+                        ID="hogar"
                         runat="server"
                         RepeatDirection="Horizontal"
                         RepeatColumns="4"
-                        DataSourceID="dataSource"
+                        DataSourceID="dataSourceHogar"
                         AlternatingItemStyle-Wrap="true"
                         CssClass="table table-responsive-lg"
                         DataKeyField="codigoBarra">
@@ -32,20 +39,20 @@
                             <div class="card">
                                 <div class="card-header alert-dark">
                                     <h5 class="card-title text-center ">
-                                        <asp:Label 
+                                        <asp:Label
                                             Text='<%# DataBinder.Eval(Container.DataItem,"descripcion") %>'
                                             runat="server" />
                                     </h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-												  <div class="col-md-12">
-													  <img class="img-fluid img-thumbnail"
-													src='Productos/<%# DataBinder.Eval(Container.DataItem,"foto") %>' 
-												    alt='<%# DataBinder.Eval(Container.DataItem,"codigoBarra") %>'
-													style="width:300px;height:200px"/>
-												  </div>
-									</div>
+                                        <div class="col-md-12">
+                                            <img class="img-fluid img-thumbnail"
+                                                src='Productos/<%# DataBinder.Eval(Container.DataItem,"foto") %>'
+                                                alt='<%# DataBinder.Eval(Container.DataItem,"codigoBarra") %>'
+                                                style="width: 300px; height: 200px" />
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <asp:Label Text="Descripcion del producto:  " runat="server" />
@@ -65,39 +72,21 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
-
-
                         </ItemTemplate>
                     </asp:DataList>
-
                 </div>
-                
-
                 <div class="card-footer alert-primary">
                     <h5 class="card-title text-center">Distribuidora del Pacifico</h5>
                 </div>
             </div>
-
-
-
         </div>
 
     </div>
-    <asp:SqlDataSource ID="dataSource" runat="server"
-        ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>'
-        SelectCommand="SELECT [codigoBarra], [precioCompra], [precioVenta], [descripcion], [exento], [estado], [unidadMedida], [cantidad], [idCategoria], [foto], [porcentajeIV], [porcentajeIVA] FROM [Productos] WHERE ([idCategoria] = @idCategoria)">
-
-
+    <asp:SqlDataSource ID="dataSourceHogar" runat="server" ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>' SelectCommand="SELECT [codigoBarra], [descripcion], [precioCompra], [precioVenta], [exento], [unidadMedida], [estado], [cantidad], [idCategoria], [porcentajeIVA], [porcentajeIV], [foto] FROM [Productos] WHERE ([idCategoria] = @idCategoria)">
         <SelectParameters>
-            <asp:Parameter DefaultValue="1" Name="idCategoria" Type="Int32"></asp:Parameter>
+            <asp:Parameter DefaultValue="2" Name="idCategoria" Type="Int32"></asp:Parameter>
         </SelectParameters>
-
     </asp:SqlDataSource>
-
-
 
 </asp:Content>

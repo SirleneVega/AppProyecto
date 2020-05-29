@@ -9,6 +9,7 @@ using DAL;
 using BLL;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AppProyecto
 {
@@ -32,6 +33,7 @@ namespace AppProyecto
                 this.serie = Request.QueryString["codigoBarra"];
             }
 
+            this.DisplayDiv(true);
             //se valida la fincion
             switch (this.funcion)
             {
@@ -40,10 +42,14 @@ namespace AppProyecto
                     break;
                 case "M":
                     this.datosEntrada(true);
+                    this.DisplayDiv(false);
+                    RequiredFieldFileUpload.Enabled=false;
                     this.btnAgregar.Text = "Guardar cambios";
                     break;
                 case "E":
                     this.datosEntrada(false);
+                    this.DisplayDiv(false);
+                    RequiredFieldFileUpload.Enabled = false;
                     this.btnAgregar.Text = "Confirmar Eliminacion";
                     break;
 
@@ -89,8 +95,17 @@ namespace AppProyecto
                 this.producto.cantidad = int.Parse(this.txtCantidad.Text.Trim());
                 this.producto.calcularEstado();
                 this.producto.exento = this.txtExcento.Text.Trim();
-                this.producto.unidadMedia = this.txtUnidad.Text.Trim();    
-                this.producto.foto = this.producto.codigoDeBarra + "_" + this.fileUpload.FileName;
+                this.producto.unidadMedia = this.txtUnidad.Text.Trim();
+
+                //Comprovacion sobre la foto
+                if (this.fileUpload.HasFile)
+                {
+                    this.producto.foto = this.producto.codigoDeBarra + "_" + this.fileUpload.FileName;
+                }
+                else
+                {
+                    this.producto.foto = null;
+                }
 
                 switch (this.funcion)
                 {
@@ -129,6 +144,9 @@ namespace AppProyecto
         {
             try
             {
+                List<Proveedores> datosproveedores = new List<Proveedores>();
+                datosproveedores.Add(agregarProveedor());
+
                 Productos tblProductos = new Productos();
                 tblProductos.codigoBarra = producto.codigoDeBarra;
                 tblProductos.descripcion = producto.descripcion;
@@ -142,6 +160,7 @@ namespace AppProyecto
                 tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
                 tblProductos.precioVenta = (Decimal)producto.precioVenta;
                 tblProductos.estado = producto.estado;
+                tblProductos.Proveedores = datosproveedores;
                 this.entities.Productos.Add(tblProductos);
                 this.entities.SaveChanges();
 
@@ -150,6 +169,13 @@ namespace AppProyecto
             {
                 throw ex;
             }
+        }
+
+        public Proveedores agregarProveedor()
+        {
+            String cedulaLegal = dropProveedores.SelectedValue;
+            Proveedores proveedor = entities.Proveedores.FirstOrDefault(u => u.cedulaLegal.Equals(cedulaLegal));
+            return proveedor;
         }
 
         private void subirFoto(string pCed, HttpPostedFile archivo)
@@ -200,7 +226,7 @@ namespace AppProyecto
                     this.txtExcento.Text = tblProducto.exento;
                     this.txtCantidad.Text =""+tblProducto.cantidad;
                     this.txtPrecioCompra.Text = ""+tblProducto.precioCompra;
-                    this.txtUnidad.Text = tblProducto.unidadMedida;
+                    this.txtUnidad.Text = tblProducto.unidadMedida; 
                 }
 
             }
@@ -226,9 +252,10 @@ namespace AppProyecto
                     tblProductos.idCategoria = int.Parse(dropCategoria.SelectedValue);
                     tblProductos.precioCompra = producto.precioCompra;
                     tblProductos.unidadMedida = producto.unidadMedia;
-                    tblProductos.foto = producto.foto;
-
-
+                    if (producto.foto != null)
+                    {
+                        tblProductos.foto = producto.foto;
+                    }
                     this.entities.SaveChanges();
                 }
 
@@ -265,6 +292,11 @@ namespace AppProyecto
         private void mensaje(string txt)
         {
             Response.Write("<script type='text/javascript'> alert('" + txt + "');</script>");
+        }
+
+        private void DisplayDiv(bool isShow)
+        {
+            this.idProveedores.Visible = isShow;
         }
     }
 }

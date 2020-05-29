@@ -122,3 +122,7 @@ footer {
 h2 {
     font-family: 'Times New Roman';
 }
+
+footer a, p, strong {
+    color:white;
+}

@@ -216,6 +216,31 @@
                 </div>
             </div>
 
+            <div id="idProveedores" class="form-group" runat="server">
+                <div class=" row">
+                    <div class="col-lg-6" style="margin-right: auto; margin-left: auto;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:Label Font-Bold="true" Text="Proveedor" runat="server" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <asp:DropDownList ID="dropProveedores" runat="server" CssClass="form-control" DataSourceID="bdProveedores" DataTextField="nombreComercial" DataValueField="cedulaLegal">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-1">
+                                <asp:RequiredFieldValidator ID="requeiredProveedores"
+                                    ErrorMessage="Por favor selecionar proveedor"
+                                    ControlToValidate="dropProveedores"
+                                    runat="server"
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <%--validaciones--%>
             <div class="form-group">
                 <div class="row">
@@ -246,6 +271,8 @@
     </div>
 
     <asp:SqlDataSource runat="server" ID="dataCategorias" ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>' SelectCommand="SELECT [idCategoria], [descripcion] FROM [CategoriaProductos]" />
-
+    <asp:SqlDataSource ID="bdProveedores" runat="server"
+        ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>'
+        SelectCommand="SELECT [cedulaLegal], [nombreComercial], [telefono], [direccion], [contacto], [email] FROM [Proveedores]" />
 
 </asp:Content>

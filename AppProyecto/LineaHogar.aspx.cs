@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AppProyecto
 {
-    public partial class LineaBlanca : System.Web.UI.Page
+    public partial class LineaHogar : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

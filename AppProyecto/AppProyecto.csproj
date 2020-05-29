@@ -106,6 +106,9 @@
     <Content Include="Comprar.aspx" />
     <Content Include="default.aspx" />
     <Content Include="InformeFacturas.aspx" />
+    <Content Include="LineaBlanca.aspx" />
+    <Content Include="LineaHogar.aspx" />
+    <Content Include="LineaTecnologica.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Registrarme.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -223,6 +226,27 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DtsModeloInformes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LineaBlanca.aspx.cs">
+      <DependentUpon>LineaBlanca.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaBlanca.aspx.designer.cs">
+      <DependentUpon>LineaBlanca.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LineaHogar.aspx.cs">
+      <DependentUpon>LineaHogar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaHogar.aspx.designer.cs">
+      <DependentUpon>LineaHogar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LineaTecnologica.aspx.cs">
+      <DependentUpon>LineaTecnologica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaTecnologica.aspx.designer.cs">
+      <DependentUpon>LineaTecnologica.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
