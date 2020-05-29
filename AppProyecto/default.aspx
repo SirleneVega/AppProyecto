@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">Imagen1</h5>
+                    <h5 class="card-title">Nuevos articulos</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
@@ -53,7 +53,7 @@
                     <img alt="Cambiar imagen" class="difuminado2" width="400" height="400" onmouseout="this.src='www/css/img/1.jfif';" onmouseover="this.src='www/css/img/2.jfif';" src="www/css/img/1.jfif" />
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Imagen2</h5>
+                    <h5 class="card-title">Descuentos</h5>
                     <p class="card-text">.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
@@ -63,7 +63,7 @@
                     <img alt="Cambiar imagen" width="400" class="difuminado" height="400" onmouseout="this.src='www/css/img/2.jfif';" onmouseover="this.src='www/css/img/1.jfif';" src="www/css/img/2.jfif" />
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Imagen3</h5>
+                    <h5 class="card-title">Exclusivos</h5>
                     <p class="card-text">.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
