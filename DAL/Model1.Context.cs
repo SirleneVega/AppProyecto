@@ -177,5 +177,14 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("modificarRole", idUsuarioParameter, idRoleParameter);
         }
+    
+        public virtual int agregarPantallas(string idPantalla)
+        {
+            var idPantallaParameter = idPantalla != null ?
+                new ObjectParameter("idPantalla", idPantalla) :
+                new ObjectParameter("idPantalla", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("agregarPantallas", idPantallaParameter);
+        }
     }
 }

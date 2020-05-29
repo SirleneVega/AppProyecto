@@ -297,6 +297,9 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="agregarPantallas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPantalla" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="asociarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cedula" Type="varchar" Mode="In" />
           <Parameter Name="codigo" Type="varchar" Mode="In" />
@@ -635,6 +638,9 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <Parameter Name="idUsuario" Mode="In" Type="String" />
             <Parameter Name="idRole" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="agregarPantallas">
+            <Parameter Name="idPantalla" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Vp_PantallaUsuario">
           <Key>
@@ -936,6 +942,7 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="asociarProveedor" FunctionName="DistribuidoraPModel.Store.asociarProveedor" />
           <FunctionImportMapping FunctionImportName="modificarRole" FunctionName="DistribuidoraPModel.Store.modificarRole" />
+          <FunctionImportMapping FunctionImportName="agregarPantallas" FunctionName="DistribuidoraPModel.Store.agregarPantallas" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
