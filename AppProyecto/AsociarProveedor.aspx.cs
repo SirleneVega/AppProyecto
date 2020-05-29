@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -36,6 +37,32 @@ namespace AppProyecto
             {
                 throw ex;
             }
+        }
+
+        protected void btnAsosiar_Click(object sender, EventArgs e)
+        {
+            String cedula = this.dropProveedor.SelectedValue;
+            String codigo = this.dropProducto.SelectedValue;
+            this.asociarProveedor(cedula, codigo);
+        }
+
+        public void asociarProveedor(String cedulaLegal, String codigo)
+        {
+            try
+            {
+                this.entities.asociarProveedor(cedulaLegal, codigo);
+                this.entities.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+                mensaje("Proveedor ya ha sido previamente aosciado");
+            }
+        }
+
+        private void mensaje(string texto)
+        {
+            Response.Write("<script type='text/javascript'> alert('" + texto + "');</script>");
         }
     }
 }

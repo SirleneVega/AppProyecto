@@ -126,6 +126,26 @@
           <Property Name="password" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_Informe_Facturas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Vp_Informe_Facturas">
+          <Key>
+            <PropertyRef Name="idFactura" />
+            <PropertyRef Name="tipoPago" />
+            <PropertyRef Name="subTotal" />
+            <PropertyRef Name="MontoImpuesto" />
+            <PropertyRef Name="transporte" />
+            <PropertyRef Name="nombreCompleto" />
+          </Key>
+          <Property Name="idFactura" Type="int" Nullable="false" />
+          <Property Name="tipoPago" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="subTotal" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="MontoImpuesto" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="transporte" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="numeroCheque" Type="int" />
+          <Property Name="nombreBanco" Type="varchar" MaxLength="100" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_PantallaUsuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vp_PantallaUsuario">
           <Key>
@@ -277,8 +297,16 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="asociarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cedula" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="calcularFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idFactura" Type="int" Mode="In" />
+        </Function>
+        <Function Name="modificarRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUsuario" Type="varchar(max)" Mode="In" />
+          <Parameter Name="idRole" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -310,6 +338,9 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="validarAsociarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="contador" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="DistribuidoraPModelStoreContainer">
           <EntitySet Name="CategoriaProductos" EntityType="Self.CategoriaProductos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleFacturas" EntityType="Self.DetalleFacturas" Schema="dbo" store:Type="Tables" />
@@ -323,6 +354,18 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <EntitySet Name="RolUsuarios" EntityType="Self.RolUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vp_Informe_Facturas" EntityType="Self.Vp_Informe_Facturas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vp_Informe_Facturas].[idFactura] AS [idFactura], 
+    [Vp_Informe_Facturas].[tipoPago] AS [tipoPago], 
+    [Vp_Informe_Facturas].[subTotal] AS [subTotal], 
+    [Vp_Informe_Facturas].[MontoImpuesto] AS [MontoImpuesto], 
+    [Vp_Informe_Facturas].[transporte] AS [transporte], 
+    [Vp_Informe_Facturas].[numeroCheque] AS [numeroCheque], 
+    [Vp_Informe_Facturas].[nombreBanco] AS [nombreBanco], 
+    [Vp_Informe_Facturas].[nombreCompleto] AS [nombreCompleto]
+    FROM [dbo].[Vp_Informe_Facturas] AS [Vp_Informe_Facturas]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Vp_PantallaUsuario" EntityType="Self.Vp_PantallaUsuario" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Vp_PantallaUsuario].[idRol] AS [idRol], 
@@ -581,7 +624,16 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
           <FunctionImport Name="calcularFactura">
-            <Parameter Name="idFactura" Mode="In" Type="Int32" />
+          <Parameter Name="idFactura" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Vp_Informe_Facturas" EntityType="DistribuidoraPModel.Vp_Informe_Facturas" />
+          <FunctionImport Name="asociarProveedor">
+            <Parameter Name="cedula" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modificarRole">
+            <Parameter Name="idUsuario" Mode="In" Type="String" />
+            <Parameter Name="idRole" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Vp_PantallaUsuario">
@@ -669,6 +721,24 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
           <End Type="DistribuidoraPModel.Proveedores" Role="Proveedores" Multiplicity="*" />
           <End Type="DistribuidoraPModel.Productos" Role="Productos" Multiplicity="*" />
         </Association>
+        <EntityType Name="Vp_Informe_Facturas">
+          <Key>
+            <PropertyRef Name="idFactura" />
+            <PropertyRef Name="tipoPago" />
+            <PropertyRef Name="subTotal" />
+            <PropertyRef Name="MontoImpuesto" />
+            <PropertyRef Name="transporte" />
+            <PropertyRef Name="nombreCompleto" />
+          </Key>
+          <Property Name="idFactura" Type="Int32" Nullable="false" />
+          <Property Name="tipoPago" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subTotal" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="MontoImpuesto" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="transporte" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="numeroCheque" Type="Int32" />
+          <Property Name="nombreBanco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombreCompleto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -850,6 +920,22 @@ advertencia 6002: La tabla o vista 'DistribuidoraP.dbo.Vp_RolesUsuarios' no tien
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="calcularFactura" FunctionName="DistribuidoraPModel.Store.calcularFactura" />
+          <EntitySetMapping Name="Vp_Informe_Facturas">
+            <EntityTypeMapping TypeName="DistribuidoraPModel.Vp_Informe_Facturas">
+              <MappingFragment StoreEntitySet="Vp_Informe_Facturas">
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="nombreBanco" ColumnName="nombreBanco" />
+                <ScalarProperty Name="numeroCheque" ColumnName="numeroCheque" />
+                <ScalarProperty Name="transporte" ColumnName="transporte" />
+                <ScalarProperty Name="MontoImpuesto" ColumnName="MontoImpuesto" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="tipoPago" ColumnName="tipoPago" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="asociarProveedor" FunctionName="DistribuidoraPModel.Store.asociarProveedor" />
+          <FunctionImportMapping FunctionImportName="modificarRole" FunctionName="DistribuidoraPModel.Store.modificarRole" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -23,6 +23,7 @@
         <AssociationConnector Association="DistribuidoraPModel.FK__Productos__idCat__48CFD27E" />
         <AssociationConnector Association="DistribuidoraPModel.FK__DetalleFa__idPro__4CA06362" />
         <AssociationConnector Association="DistribuidoraPModel.Inventarios" />
+        <EntityTypeShape EntityType="DistribuidoraPModel.Vp_Informe_Facturas" Width="1.5" PointX="8.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

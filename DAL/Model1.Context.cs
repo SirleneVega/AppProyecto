@@ -38,6 +38,7 @@ namespace DAL
         public virtual DbSet<Vp_PantallaUsuario> Vp_PantallaUsuario { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }
+        public virtual DbSet<Vp_Informe_Facturas> Vp_Informe_Facturas { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -149,6 +150,32 @@ namespace DAL
                 new ObjectParameter("idFactura", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("calcularFactura", idFacturaParameter);
+        }
+    
+        public virtual int asociarProveedor(string cedula, string codigo)
+        {
+            var cedulaParameter = cedula != null ?
+                new ObjectParameter("cedula", cedula) :
+                new ObjectParameter("cedula", typeof(string));
+    
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("asociarProveedor", cedulaParameter, codigoParameter);
+        }
+    
+        public virtual int modificarRole(string idUsuario, Nullable<int> idRole)
+        {
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("idUsuario", idUsuario) :
+                new ObjectParameter("idUsuario", typeof(string));
+    
+            var idRoleParameter = idRole.HasValue ?
+                new ObjectParameter("idRole", idRole) :
+                new ObjectParameter("idRole", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("modificarRole", idUsuarioParameter, idRoleParameter);
         }
     }
 }

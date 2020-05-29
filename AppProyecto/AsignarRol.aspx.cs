@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 //Referencias
@@ -36,6 +37,41 @@ namespace AppProyecto
             {
                 throw ex;
             }
+        }
+
+        protected void btnCambiarRol_Click(object sender, EventArgs e)
+        {
+            string email = this.dropUsuario.SelectedValue;
+            int rol = int.Parse(this.dropProveedor.SelectedValue);
+
+            this.modificarRol(email, rol);
+        }
+
+        public void modificarRol(String email, int rol)
+        {
+            try
+            {
+                this.entities.modificarRole(email, rol);
+                this.entities.SaveChanges();
+                if (Session["idIsuario"].ToString() == email)
+                {
+                    FormsAuthentication.SignOut();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Su rol ha cambiado, se cerro su sesión'); window.location.href='Login.aspx';", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Rol del usuario modificado'); window.location.href='AsignarRol.aspx';", true);
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void mensaje(string texto)
+        {
+            Response.Write("<script type='text/javascript'> alert('" + texto + "');</script>");
         }
     }
 }

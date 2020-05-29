@@ -197,7 +197,7 @@
                                              Response.Write("style='display:none'");
                                             }
                                         %>>
-                                        <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Asignar Rol</a>
+                                        <a class="dropdown-item cambioColor text-white" href="AsignarRol.aspx">Cambiar  Rol</a>
                                     </div>
                                     <div
                                         <% if (validarPantalla((int)Session["tipoUsuario"], "AgregarRol"))
