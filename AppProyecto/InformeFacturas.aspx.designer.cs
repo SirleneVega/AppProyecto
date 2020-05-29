@@ -11,25 +11,25 @@ namespace AppProyecto
 {
 
 
-    public partial class LineaTecnologica
+    public partial class InformeFacturas
     {
 
         /// <summary>
-        /// Control hogar.
+        /// Control ReportViewer1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList hogar;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
 
         /// <summary>
-        /// Control dataSourceTec.
+        /// Control SqlDataSource1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dataSourceTec;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
     }
 }
