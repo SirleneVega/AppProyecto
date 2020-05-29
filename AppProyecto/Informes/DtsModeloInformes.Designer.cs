@@ -295,6 +295,8 @@ namespace AppProyecto.Informes {
             
             private global::System.Data.DataColumn columnnombreCompleto;
             
+            private global::System.Data.DataColumn columnmontoTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Vp_Informe_FacturasDataTable() {
@@ -394,6 +396,14 @@ namespace AppProyecto.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn montoTotalColumn {
+                get {
+                    return this.columnmontoTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace AppProyecto.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Vp_Informe_FacturasRow AddVp_Informe_FacturasRow(int idFactura, string tipoPago, decimal subTotal, decimal MontoImpuesto, decimal transporte, int numeroCheque, string nombreBanco, string nombreCompleto) {
+            public Vp_Informe_FacturasRow AddVp_Informe_FacturasRow(int idFactura, string tipoPago, decimal subTotal, decimal MontoImpuesto, decimal transporte, int numeroCheque, string nombreBanco, string nombreCompleto, decimal montoTotal) {
                 Vp_Informe_FacturasRow rowVp_Informe_FacturasRow = ((Vp_Informe_FacturasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         idFactura,
@@ -439,7 +449,8 @@ namespace AppProyecto.Informes {
                         transporte,
                         numeroCheque,
                         nombreBanco,
-                        nombreCompleto};
+                        nombreCompleto,
+                        montoTotal};
                 rowVp_Informe_FacturasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVp_Informe_FacturasRow);
                 return rowVp_Informe_FacturasRow;
@@ -477,6 +488,7 @@ namespace AppProyecto.Informes {
                 this.columnnumeroCheque = base.Columns["numeroCheque"];
                 this.columnnombreBanco = base.Columns["nombreBanco"];
                 this.columnnombreCompleto = base.Columns["nombreCompleto"];
+                this.columnmontoTotal = base.Columns["montoTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -498,6 +510,8 @@ namespace AppProyecto.Informes {
                 base.Columns.Add(this.columnnombreBanco);
                 this.columnnombreCompleto = new global::System.Data.DataColumn("nombreCompleto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombreCompleto);
+                this.columnmontoTotal = new global::System.Data.DataColumn("montoTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoTotal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidFactura}, true));
                 this.columnidFactura.AllowDBNull = false;
@@ -510,6 +524,7 @@ namespace AppProyecto.Informes {
                 this.columnnombreBanco.MaxLength = 100;
                 this.columnnombreCompleto.AllowDBNull = false;
                 this.columnnombreCompleto.MaxLength = 50;
+                this.columnmontoTotal.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -752,6 +767,17 @@ namespace AppProyecto.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal montoTotal {
+                get {
+                    return ((decimal)(this[this.tableVp_Informe_Facturas.montoTotalColumn]));
+                }
+                set {
+                    this[this.tableVp_Informe_Facturas.montoTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnumeroChequeNull() {
                 return this.IsNull(this.tableVp_Informe_Facturas.numeroChequeColumn);
             }
@@ -942,6 +968,7 @@ namespace AppProyecto.Informes.DtsModeloInformesTableAdapters {
             tableMapping.ColumnMappings.Add("numeroCheque", "numeroCheque");
             tableMapping.ColumnMappings.Add("nombreBanco", "nombreBanco");
             tableMapping.ColumnMappings.Add("nombreCompleto", "nombreCompleto");
+            tableMapping.ColumnMappings.Add("montoTotal", "montoTotal");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

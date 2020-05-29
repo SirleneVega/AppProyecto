@@ -27,6 +27,7 @@
               <Mapping SourceColumn="numeroCheque" DataSetColumn="numeroCheque" />
               <Mapping SourceColumn="nombreBanco" DataSetColumn="nombreBanco" />
               <Mapping SourceColumn="nombreCompleto" DataSetColumn="nombreCompleto" />
+              <Mapping SourceColumn="montoTotal" DataSetColumn="montoTotal" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -38,7 +39,7 @@
   <xs:element name="DtsModeloInformes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DtsModeloInformes" msprop:Generator_UserDSName="DtsModeloInformes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Vp_Informe_Facturas" msprop:Generator_TableClassName="Vp_Informe_FacturasDataTable" msprop:Generator_TableVarName="tableVp_Informe_Facturas" msprop:Generator_TablePropName="Vp_Informe_Facturas" msprop:Generator_RowDeletingName="Vp_Informe_FacturasRowDeleting" msprop:Generator_RowChangingName="Vp_Informe_FacturasRowChanging" msprop:Generator_RowEvHandlerName="Vp_Informe_FacturasRowChangeEventHandler" msprop:Generator_RowDeletedName="Vp_Informe_FacturasRowDeleted" msprop:Generator_UserTableName="Vp_Informe_Facturas" msprop:Generator_RowChangedName="Vp_Informe_FacturasRowChanged" msprop:Generator_RowEvArgName="Vp_Informe_FacturasRowChangeEvent" msprop:Generator_RowClassName="Vp_Informe_FacturasRow">
+        <xs:element name="Vp_Informe_Facturas" msprop:Generator_TableClassName="Vp_Informe_FacturasDataTable" msprop:Generator_TableVarName="tableVp_Informe_Facturas" msprop:Generator_RowChangedName="Vp_Informe_FacturasRowChanged" msprop:Generator_TablePropName="Vp_Informe_Facturas" msprop:Generator_RowDeletingName="Vp_Informe_FacturasRowDeleting" msprop:Generator_RowChangingName="Vp_Informe_FacturasRowChanging" msprop:Generator_RowEvHandlerName="Vp_Informe_FacturasRowChangeEventHandler" msprop:Generator_RowDeletedName="Vp_Informe_FacturasRowDeleted" msprop:Generator_RowClassName="Vp_Informe_FacturasRow" msprop:Generator_UserTableName="Vp_Informe_Facturas" msprop:Generator_RowEvArgName="Vp_Informe_FacturasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idFactura" msprop:Generator_ColumnVarNameInTable="columnidFactura" msprop:Generator_ColumnPropNameInRow="idFactura" msprop:Generator_ColumnPropNameInTable="idFacturaColumn" msprop:Generator_UserColumnName="idFactura" type="xs:int" />
@@ -67,6 +68,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="montoTotal" msprop:Generator_ColumnVarNameInTable="columnmontoTotal" msprop:Generator_ColumnPropNameInRow="montoTotal" msprop:Generator_ColumnPropNameInTable="montoTotalColumn" msprop:Generator_UserColumnName="montoTotal" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

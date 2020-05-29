@@ -118,6 +118,7 @@ namespace AppProyecto
                 facturas.numeroCheque = fac.numeroCheque;
                 facturas.nombreBanco = fac.entidadBancaria;
 
+                enviarCorreo(facturas.idCliente, id, (List<DetalleFactura>)Session["elcarritoquetodolopuede"]);
                 entities.Facturas.Add(facturas);
                 entities.SaveChanges();
 
@@ -291,11 +292,36 @@ namespace AppProyecto
         {
             try
             {
+                
                 insertFactura();
                 Response.Redirect("default.aspx");
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+        protected void enviarCorreo(string idCliente, int idFactura, List<DetalleFactura> arrayProductos)
+        {
+            Email email = new Email();
+
+            try
+            {
+                DAL.Usuarios usuarioP = this.entities.Usuarios.FirstOrDefault(e => (e.email.Equals(idCliente)));
+                Usuario u = new Usuario();
+                u.cedula = usuarioP.cedula;
+                u.Contrasena = usuarioP.password;
+                u.direccion = usuarioP.direccion;
+                u.email = usuarioP.email;
+                u.nombreCompleto = usuarioP.nombreCompleto;
+                u.telefono = usuarioP.telefono;
+                u.tipoCedula = usuarioP.tipoCedula;
+                email.generaPdf(u, Server.MapPath(".") + @"\Pdf\FacturaeN" + idFactura + ".pdf", Server.MapPath(".") + @"\www\css\img\logo.png", arrayProductos);
+                email.enviar(u, Server.MapPath(".") + @"\Pdf\FacturaeN" + idFactura + ".pdf");
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }

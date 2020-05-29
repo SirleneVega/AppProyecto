@@ -66,8 +66,8 @@ namespace BLL
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("plataformavirtualucrpacifico@gmail.com",
-                    "Costarica2020$");
+                smtp.Credentials = new NetworkCredential("DistribuidoraQueTodoLoPuede@gmail.com",
+                    "ucr2020$");
 
 
                 smtp.Send(emaile);
@@ -82,7 +82,7 @@ namespace BLL
                 throw ex;
             }
         }
-        public void generaPdf(Usuario u, string urlCrearPdf, String urlImagen)
+        public void generaPdf(Usuario u, string urlCrearPdf, String urlImagen,List<DetalleFactura> arrayProductos)
         {
             FileStream fl = new FileStream(urlCrearPdf, FileMode.Create);
             Document documento = new Document(iTextSharp.text.PageSize.LETTER, 0, 0, 0, 0);
@@ -132,14 +132,14 @@ namespace BLL
 
 
 
-            //for (int i = 0; i < arrayProductos; i++)
-            //{
-            //    table.AddCell(arrayProductos.get(i).codigoBarra);
-            //    table.AddCell(arrayProductos.get(i).producto);
-            //    table.AddCell(arrayProductos.get(i).cantidad);
-            //    table.AddCell(arrayProductos.get(i).subtotal);
-
-            //}
+            for (int i = 0; i < arrayProductos.Count; i++)
+            {
+                table.AddCell(arrayProductos[i].codigoDeBarra);
+                table.AddCell(arrayProductos[i].descripcion);
+                table.AddCell(""+arrayProductos[i].cantidad);
+                table.AddCell(""+arrayProductos[i].subTotal);
+                
+            }
             documento.Add(table);
 
             documento.Add(Chunk.NEWLINE);

@@ -60,6 +60,7 @@ namespace AppProyecto
                     if (listaDetalleFactura.Exists(x => x.codigoDeBarra.Contains(produc.codigoDeBarra)))
                     {
                         listaDetalleFactura.RemoveAt(i);
+                        
                         break;
                     }
                 }

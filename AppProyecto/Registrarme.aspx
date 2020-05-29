@@ -164,12 +164,14 @@
                         <div class="col-md-6">
                             <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server" TextMode="Password" MaxLength="50" />
                         </div>
-                        <div class="col-md-1">
-                            <asp:RequiredFieldValidator ID="requieredTxtPassword"
+                       <div class="col-md-1">
+                            <div id="idVerificador" runat="server">
+                                <asp:RequiredFieldValidator ID="requieredTxtPassword"
                                 ErrorMessage="Por favor llenar Contraseña"
                                 ControlToValidate="txtPassword"
                                 runat="server"
                                 ForeColor="Red">*</asp:RequiredFieldValidator>
+                            </div>
                         </div>
                     </div>
                 </div>
