@@ -38,7 +38,7 @@ namespace AppProyecto.cr.fi.bccr.gee {
         
         /// <remarks/>
         public wsindicadoreseconomicos() {
-            this.Url = global::AppProyecto.Properties.Settings.Default.AppProyecto_cr_fi_bccr_gee_wsindicadoreseconomicos;
+            this.Url = "https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
