@@ -72,11 +72,13 @@
                                             <asp:Button ID="btnModificar" Text="Modificar" runat="server" 
                                                 CommandName="modificar"
                                                 CommandArgument='<%# ((DataListItem)Container).ItemIndex%>'
-                                                CssClass="btn btn-outline-primary" />
+                                                CssClass="btn btn-outline-primary" 
+                                                CausesValidation="false"/>
                                             <asp:Button ID="btnFinalizar" Text="Eliminar" runat="server" 
                                                 CommandName="eliminar"
                                                 CommandArgument='<%# ((DataListItem)Container).ItemIndex%>'
-                                                CssClass="btn btn-outline-info" />
+                                                CssClass="btn btn-outline-info"
+                                                CausesValidation="false"/>
                                         </div>
                                     </div>
                                 </div>
