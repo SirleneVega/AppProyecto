@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="LineaBlanca.aspx.cs" Inherits="AppProyecto.LineaBlanca" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="LineaTecnologica.aspx.cs" Inherits="AppProyecto.LineaTecnologica" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -10,7 +11,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="card-title">Linea Blanca</h2>
+                                <h2 class="card-title">Linea Tecnologica</h2>
                             </div>
                         </div>
                     </div>
@@ -19,7 +20,7 @@
                     <div id="Carousel" class="carousel alert-primary mt-5" data-ride="carousel">
                         <%--creacion de los  indicadores para el carousel--%>
                         <ul class="carousel-indicators">
-                            <asp:Repeater ID="ulList" runat="server" DataSourceID="dataSource">
+                            <asp:Repeater ID="ulList" runat="server" DataSourceID="dataSourceTec">
                                 <ItemTemplate>
                                     <li data-target="#Carousel" data-slide-to='ID<%# Eval("codigoBarra") %>' class="active"></li>
                                 </ItemTemplate>
@@ -27,7 +28,7 @@
                         </ul>
                         <%--creacion de slide  para  el  carousel--%>
                         <div class="carousel-inner text-center">
-                            <asp:Repeater ID="ulInner" runat="server" DataSourceID="dataSource">
+                            <asp:Repeater ID="ulInner" runat="server" DataSourceID="dataSourceTec">
                                 <ItemTemplate>
                                     <div <% if (this.contador == 0)
                                         {
@@ -74,17 +75,17 @@
                 </div>
                 <div class="card-body">
                     <asp:DataList
-                        ID="lista"
+                        ID="hogar"
                         runat="server"
                         RepeatDirection="Horizontal"
                         RepeatColumns="4"
-                        DataSourceID="dataSource"
+                        DataSourceID="dataSourceTec"
                         AlternatingItemStyle-Wrap="true"
                         CssClass="table table-responsive-lg"
                         DataKeyField="codigoBarra">
                         <ItemTemplate>
                             <div class="card">
-                                <div class="card-header alert-dark">
+                                <div class="card-header alert-primary">
                                     <h5 class="card-title text-center ">
                                         <asp:Label
                                             Text='<%# DataBinder.Eval(Container.DataItem,"descripcion") %>'
@@ -111,14 +112,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <asp:Label Text="Precio Venta:  " runat="server" />
-                                            <asp:Label ID="precioC"
+                                            <asp:Label Text="Precio Venta:  ₡ " runat="server" />
+                                            <asp:Label ID="precioColon"
                                                 Text='<%# DataBinder.Eval(Container.DataItem,"precioVenta") %>'
                                                 Font-Bold="true"
                                                 runat="server" />
                                         </div>
                                     </div>
-                                    <div class="row">
+                                   <div class="row">
                                         <div class="col-md-12">
                                             <asp:Label Text="Precio de venta:  $" runat="server" />
                                             <asp:Label ID="precioD"
@@ -131,7 +132,6 @@
                             </div>
                         </ItemTemplate>
                     </asp:DataList>
-
                 </div>
                 <div class="card-footer alert-primary">
                     <h5 class="card-title text-center">Distribuidora del Pacifico</h5>
@@ -139,13 +139,9 @@
             </div>
         </div>
     </div>
-    <asp:SqlDataSource ID="dataSource" runat="server"
-        ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>'
-        SelectCommand="SELECT [codigoBarra], [precioCompra], [precioVenta], [descripcion], [exento], [estado], [unidadMedida], [cantidad], [idCategoria], [foto], [porcentajeIV], [porcentajeIVA] FROM [Productos] WHERE ([idCategoria] = @idCategoria)">
-
-
+    <asp:SqlDataSource runat="server" ID="dataSourceTec" ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>' SelectCommand="SELECT [codigoBarra], [descripcion], [precioCompra], [precioVenta], [exento], [unidadMedida], [estado], [cantidad], [idCategoria], [porcentajeIV], [foto], [porcentajeIVA] FROM [Productos] WHERE ([idCategoria] = @idCategoria)">
         <SelectParameters>
-            <asp:Parameter DefaultValue="1" Name="idCategoria" Type="Int32"></asp:Parameter>
+            <asp:Parameter DefaultValue="3" Name="idCategoria" Type="Int32"></asp:Parameter>
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>

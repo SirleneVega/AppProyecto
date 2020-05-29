@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AppProyecto
 {
-    public partial class LineaBlanca : System.Web.UI.Page
+    public partial class LineaTecnologica : System.Web.UI.Page
     {
         public int contador = 0;
         protected void Page_Load(object sender, EventArgs e)

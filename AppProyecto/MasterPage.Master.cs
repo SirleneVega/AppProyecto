@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 //referencia
 using DAL;
+using AppProyecto.cr.fi.bccr.gee;
+using System.Data;
 
 namespace AppProyecto
 {
@@ -14,10 +16,14 @@ namespace AppProyecto
     public partial class MasterPage : System.Web.UI.MasterPage
     {
         DistribuidoraPEntities entities;
+        private wsindicadoreseconomicos wsindicadoreseconomicos = null;
+
+        private DataSet datos = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            entities = new DistribuidoraPEntities(); 
-
+            entities = new DistribuidoraPEntities();
+            
             if (Session["tipoUsuario"] == null)
             {
                 Session["tipoUsuario"] = 0;
@@ -28,6 +34,15 @@ namespace AppProyecto
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 Session["tipoUsuario"] = 0;
+            }
+            try
+            {
+                this.tipoCambio();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
 
         }
@@ -54,6 +69,25 @@ namespace AppProyecto
             }
 
         }
+
+        private void tipoCambio()
+        {
+            try
+            {
+                this.wsindicadoreseconomicos = new wsindicadoreseconomicos();
+                this.datos = this.wsindicadoreseconomicos.ObtenerIndicadoresEconomicos("318",
+                    DateTime.Now.ToString("dd/MM/yyyy"), DateTime.Now.ToString("dd/MM/yyyy"),
+                    "Marlene Vega Gonzalez", "N", "vegagonzalez.marlene@gmail.com", "E1ZNAMAEAL");
+                Session["TipoCambio"] = Decimal.Parse(this.datos.Tables[0].Rows[0][2].ToString());
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
     }
 }

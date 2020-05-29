@@ -107,6 +107,8 @@
     <Content Include="default.aspx" />
     <Content Include="InformeFacturas.aspx" />
     <Content Include="LineaBlanca.aspx" />
+    <Content Include="LineaHogar.aspx" />
+    <Content Include="LineaTecnologica.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Registrarme.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
@@ -124,6 +126,15 @@
     </Content>
     <Content Include="Tienda.aspx" />
     <Content Include="Ventas.aspx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\cr.fi.bccr.gee\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\cr.fi.bccr.gee\wsindicadoreseconomicos.disco" />
     <Content Include="Web.config" />
     <Content Include="www\css\bootstrap.min.css" />
     <Content Include="www\css\img\1.jfif" />
@@ -232,6 +243,20 @@
     <Compile Include="LineaBlanca.aspx.designer.cs">
       <DependentUpon>LineaBlanca.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LineaHogar.aspx.cs">
+      <DependentUpon>LineaHogar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaHogar.aspx.designer.cs">
+      <DependentUpon>LineaHogar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LineaTecnologica.aspx.cs">
+      <DependentUpon>LineaTecnologica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaTecnologica.aspx.designer.cs">
+      <DependentUpon>LineaTecnologica.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,6 +272,11 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Registrarme.aspx.cs">
       <DependentUpon>Registrarme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -269,6 +299,11 @@
     <Compile Include="Ventas.aspx.designer.cs">
       <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\cr.fi.bccr.gee\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.Master" />
@@ -284,6 +319,7 @@
       <DependentUpon>DtsModeloInformes.xsd</DependentUpon>
     </Content>
     <None Include="packages.config" />
+    <None Include="Web References\cr.fi.bccr.gee\wsindicadoreseconomicos.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -307,6 +343,25 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Informes\InformeFactura.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\cr.fi.bccr.gee\</RelPath>
+      <UpdateFromURL>https://gee.bccr.fi.cr/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AppProyecto_cr_fi_bccr_gee_wsindicadoreseconomicos</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

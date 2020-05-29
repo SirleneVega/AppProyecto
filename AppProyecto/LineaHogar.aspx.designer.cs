@@ -11,7 +11,7 @@ namespace AppProyecto
 {
 
 
-    public partial class LineaBlanca
+    public partial class LineaHogar
     {
 
         /// <summary>
@@ -33,21 +33,21 @@ namespace AppProyecto
         protected global::System.Web.UI.WebControls.Repeater ulInner;
 
         /// <summary>
-        /// Control lista.
+        /// Control hogar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList lista;
+        protected global::System.Web.UI.WebControls.DataList hogar;
 
         /// <summary>
-        /// Control dataSource.
+        /// Control dataSourceHogar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource dataSourceHogar;
     }
 }
