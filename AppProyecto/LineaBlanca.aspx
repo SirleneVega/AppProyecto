@@ -16,11 +16,9 @@
                     </div>
                 </div>
 
-
+                
                 <div class="card-body">
-                    
-
-
+                  
                     <asp:DataList
                         ID="lista"
                         runat="server"
@@ -67,19 +65,29 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
+
+
+
                         </ItemTemplate>
                     </asp:DataList>
+
                 </div>
+                
+
                 <div class="card-footer alert-primary">
                     <h5 class="card-title text-center">Distribuidora del Pacifico</h5>
                 </div>
             </div>
+
+
+
         </div>
 
     </div>
-
-     <asp:SqlDataSource ID="dataSource" runat="server"
+    <asp:SqlDataSource ID="dataSource" runat="server"
         ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>'
         SelectCommand="SELECT [codigoBarra], [precioCompra], [precioVenta], [descripcion], [exento], [estado], [unidadMedida], [cantidad], [idCategoria], [foto], [porcentajeIV], [porcentajeIVA] FROM [Productos] WHERE ([idCategoria] = @idCategoria)">
 
@@ -89,5 +97,7 @@
         </SelectParameters>
 
     </asp:SqlDataSource>
+
+
 
 </asp:Content>

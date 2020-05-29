@@ -69,7 +69,8 @@
                                 aria-haspopup="true" aria-expanded="false">Producto</a>
                             <div class="dropdown-menu color">
                                 <a class="dropdown-item cambioColor text-white" href="LineaHogar.aspx">Linea Hogar</a>
-                                <a class="dropdown-item cambioColor text-white" href="#">Cosas malas</a>
+                                <a class="dropdown-item cambioColor text-white" href="LineaBlanca.aspx">Linea Blanca</a>
+                                <a class="dropdown-item cambioColor text-white" href="LineaTecnologica.aspx">Linea Tecnologica</a>
                             </div>
                         </li>
 
