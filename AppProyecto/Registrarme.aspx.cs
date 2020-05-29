@@ -51,6 +51,7 @@ namespace AppProyecto
                     break;
                 case "M":
                     this.datosEntrada(true);
+                    this.DisplayDiv(false);
                     this.btnRegistro.Text = "Guardar cambios";
                     break;
                 case "E":
@@ -69,7 +70,7 @@ namespace AppProyecto
         {
             this.usuario = new Usuario();
             this.usuario.cedula = this.txtCedula.Text.Trim();
-            this.usuario.telefono = int.Parse(this.txtCedula.Text.Trim());
+            this.usuario.telefono = int.Parse(this.txtTelefono.Text.Trim());
             this.usuario.tipoCedula = this.txtTipoCedula.Text.Trim();
             this.usuario.nombreCompleto = this.txtNombre.Text.Trim();
             this.usuario.email = this.txtEmail.Text.Trim();
@@ -93,7 +94,7 @@ namespace AppProyecto
 
             }
 
-            Response.Redirect("Default.aspx");
+            Response.Redirect("CatalogoUsuarios.aspx");
         }
 
         public void agregarUsuario(Usuario usua)
