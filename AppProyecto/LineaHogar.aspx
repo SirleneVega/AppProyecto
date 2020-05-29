@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
     <div class="container col-lg-10 mt-05">
         <div class="justify-content-center text-center">
             <%--aqui se maneja el registro de proveedores--%>
@@ -16,7 +15,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card-body">
                     <asp:DataList
                         ID="hogar"
@@ -27,26 +25,24 @@
                         AlternatingItemStyle-Wrap="true"
                         CssClass="table table-responsive-lg"
                         DataKeyField="codigoBarra">
-                        
                         <ItemTemplate>
-
                             <div class="card">
                                 <div class="card-header alert-dark">
                                     <h5 class="card-title text-center ">
-                                        <asp:Label 
+                                        <asp:Label
                                             Text='<%# DataBinder.Eval(Container.DataItem,"descripcion") %>'
                                             runat="server" />
                                     </h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-												  <div class="col-md-12">
-													  <img class="rounded img-fluid img-thumbnail"
-													src='Productos/<%# DataBinder.Eval(Container.DataItem,"foto") %>' 
-												    alt='<%# DataBinder.Eval(Container.DataItem,"codigoBarra") %>'
-													style="width:300px;height:200px"/>
-												  </div>
-									</div>
+                                        <div class="col-md-12">
+                                            <img class="img-fluid img-thumbnail"
+                                                src='Productos/<%# DataBinder.Eval(Container.DataItem,"foto") %>'
+                                                alt='<%# DataBinder.Eval(Container.DataItem,"codigoBarra") %>'
+                                                style="width: 300px; height: 200px" />
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <asp:Label Text="Descripcion del producto:  " runat="server" />
@@ -66,14 +62,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </ItemTemplate>
                     </asp:DataList>
                 </div>
-                
-
                 <div class="card-footer alert-primary">
                     <h5 class="card-title text-center">Distribuidora del Pacifico</h5>
                 </div>
@@ -81,12 +73,10 @@
         </div>
 
     </div>
-        
     <asp:SqlDataSource ID="dataSourceHogar" runat="server" ConnectionString='<%$ ConnectionStrings:DistribuidoraPConnectionString %>' SelectCommand="SELECT [codigoBarra], [descripcion], [precioCompra], [precioVenta], [exento], [unidadMedida], [estado], [cantidad], [idCategoria], [porcentajeIVA], [porcentajeIV], [foto] FROM [Productos] WHERE ([idCategoria] = @idCategoria)">
         <SelectParameters>
             <asp:Parameter DefaultValue="2" Name="idCategoria" Type="Int32"></asp:Parameter>
         </SelectParameters>
     </asp:SqlDataSource>
-
 
 </asp:Content>

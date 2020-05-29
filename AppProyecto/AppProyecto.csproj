@@ -84,6 +84,7 @@
     <Content Include="CatalogoUsuarios.aspx" />
     <Content Include="Comprar.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="LineaHogar.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Registrarme.aspx" />
     <Content Include="Tienda.aspx" />
@@ -176,6 +177,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LineaHogar.aspx.cs">
+      <DependentUpon>LineaHogar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LineaHogar.aspx.designer.cs">
+      <DependentUpon>LineaHogar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
