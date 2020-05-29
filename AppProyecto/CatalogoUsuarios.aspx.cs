@@ -37,5 +37,34 @@ namespace AppProyecto
                 throw ex;
             }
         }
+
+        protected void listaUsuarios_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            try
+            {
+                //calcular indice
+                int indice = Convert.ToInt32(e.CommandArgument);
+                //tomamos el indice
+                DataListItem item = this.listaUsuarios.Items[indice];
+                Label lbl = (Label)item.FindControl("lblCorreo");
+                Session["identificacion"] = null;
+                Session["identificacion"] = lbl.Text.Trim();
+
+                if (e.CommandName.Equals("modificar"))
+                {
+                    Response.Redirect("Registrarme.aspx?accion=M");
+                }
+                if (e.CommandName.Equals("eliminar"))
+                {
+                    Response.Redirect("Registrarme.aspx?accion=E");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

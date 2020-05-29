@@ -22,6 +22,7 @@
                     DataSourceID="tblUsuarios"
                     RepeatDirection="Horizontal"
                     RepeatColumns="2"
+                    OnItemCommand="listaUsuarios_ItemCommand"
                     AlternatingItemStyle-Wrap="true"
                     CssClass="table table-responsive-lg"
                     DataKeyField="email">
@@ -178,9 +179,14 @@
                                             </div>
                                         </div>
                                         <div class="card-footer alert-primary">
-                                            <asp:Button ID="btnModificar" Text="Cerrar" runat="server"
-                                                CssClass="btn btn-dark "
-                                                data-dismiss="modal" />
+                                            <asp:Button ID="btnModificar" Text="Modificar" runat="server"
+                                                CommandName="modificar"
+                                                CommandArgument='<%# ( (DataListItem) Container).ItemIndex %>'
+                                                CssClass="btn btn-dark" />
+                                            <asp:Button ID="btnEliminar" Text="Eliminar" runat="server"
+                                                CommandName="eliminar"
+                                                CommandArgument='<%# ( (DataListItem) Container).ItemIndex %>'
+                                                CssClass="btn btn-dark" />
                                         </div>
                                     </div>
                                 </div>
