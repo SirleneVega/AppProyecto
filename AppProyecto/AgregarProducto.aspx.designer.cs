@@ -159,6 +159,33 @@ namespace AppProyecto
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldFileUpload;
 
         /// <summary>
+        /// Control idProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idProveedores;
+
+        /// <summary>
+        /// Control dropProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropProveedores;
+
+        /// <summary>
+        /// Control requeiredProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requeiredProveedores;
+
+        /// <summary>
         /// Control validaciones.
         /// </summary>
         /// <remarks>
@@ -184,5 +211,14 @@ namespace AppProyecto
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource dataCategorias;
+
+        /// <summary>
+        /// Control bdProveedores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource bdProveedores;
     }
 }
