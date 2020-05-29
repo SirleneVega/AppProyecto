@@ -124,7 +124,7 @@
                                             <asp:Label ID="precioD"
                                                 Text='<%# (((Decimal) DataBinder.Eval(Container.DataItem, "precioVenta"))/
                                              ((Decimal) Session["TipoCambio"]) ).ToString("0.00")%>'
-                                               Font-Bold="true" runat="server"  />
+                                               Font-Bold="true" runat="server" />
                                         </div>
                                     </div>
                                 </div>
