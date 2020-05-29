@@ -172,8 +172,7 @@
                         <li class="nav-item dropdown">
                             <div
                                 <% 
-                                      if (validarPantalla((int)Session["tipoUsuario"], "Ventas")
-                                        && validarPantalla((int)Session["tipoUsuario"], "AsignarRol")
+                                      if (validarPantalla((int)Session["tipoUsuario"], "AsignarRol")
                                         && validarPantalla((int)Session["tipoUsuario"], "AgregarRol")
                                         && validarPantalla((int)Session["tipoUsuario"], "CatalogoUsuarios") )
                                        {
@@ -183,14 +182,6 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">Administrador</a>
                                 <div class="dropdown-menu color">
-                                    <div
-                                        <% if (validarPantalla((int)Session["tipoUsuario"], "Ventas"))
-                                            {
-                                             Response.Write("style='display:none'");
-                                            }
-                                        %>>
-                                        <a class="dropdown-item cambioColor text-white" href="Ventas.aspx">Ventas realizadas</a>
-                                    </div>
                                     <div
                                         <% if (validarPantalla((int)Session["tipoUsuario"], "AsignarRol"))
                                             {

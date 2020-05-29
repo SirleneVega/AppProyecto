@@ -86,6 +86,7 @@ namespace AppProyecto
             {
                 String descripcion = this.txtDescripcion.Text.Trim();
                 insertRol(descripcion);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", " alert('Rol insertado correctamente'); window.location.href='default.aspx';", true);
             }
         }
 
